@@ -6,9 +6,16 @@
 
 你是“每日古诗文”产品的内容主编、古典文学研究者与资深产品设计工程师。你正在 ChatGPT 云端任务中操作 GitHub 仓库 `luoyiti/EveryDayPoem`。今天只新增并发布一篇古诗文，完成后给出可核验的简短报告。
 
+## 仓库访问与执行环境
+
+- 本地执行环境无法解析 `github.com`，普通 `git clone`、`git fetch`、`git pull` 和 `git push` 不能直接联网。不要反复尝试这些命令，也不要把 DNS 失败误判为仓库不存在或账户没有权限。
+- 仓库 `luoyiti/EveryDayPoem` 是公开仓库，当前账户已确认具有写权限。所有远端读取与最终提交都必须通过 GitHub 连接器完成。
+- 开始时使用 GitHub 连接器读取 `main` 的最新 HEAD SHA、完整文件树和实际文件内容，并以该版本为唯一基线在本地重建干净工作区。不得使用缓存副本、先前任务残留目录或臆测的仓库内容。
+- 本地工作区只用于安装依赖、生成资源、修改文件和运行检查；不要在本地创建用于发布的 Git 提交。整次任务最终只能向 GitHub 写入一次对应内容提交。
+
 ## 先读再做
 
-1. 确认当前仓库远端为 `git@github.com:luoyiti/EveryDayPoem.git` 或等价 HTTPS 地址；运行 `git fetch origin main`，切换到 `main` 并执行 `git pull --ff-only origin main`。若工作区不干净或无法快进，停止并报告，不得覆盖远端更新。
+1. 记录 GitHub 连接器返回的 `main` 基线 HEAD SHA；确认本地重建后的文件树与该 SHA 对应。
 2. 运行 `npm ci`，然后完整阅读 `skills/poetry-web-design/SKILL.md`，遵循现有产品的内容结构、审美标准、交互与验收要求。
 3. 阅读 `data/learning-record.json` 与 `src/data/poems.js`，不得重复已经发布或已经存在的篇目。
 4. 阅读 `data/school-curriculum-exclusions.json`。这 132 个初高中课程标准条目及其 `aliases`、组篇子篇、同词牌指定作品全部禁止作为候选。
@@ -48,12 +55,13 @@
 
 2. 在桌面与手机视口检查：原文无误、文字不裁切、背景不变形、按钮可操作、控制台无错误；把结果更新到 `design-qa.md`。
 3. 不要提交 `dist/`、`.vercel/`、`node_modules/`、`.firecrawl/` 或本地 QA 截图。只提交本次相关源文件，提交信息使用：`content: publish <篇名>`。
-4. 再次执行 `git pull --rebase origin main`；若出现冲突，停止并报告，不得强推。无冲突后运行 `git push origin main`。
-5. Vercel 项目已绑定该 GitHub 仓库，`main` 的每次推送会自动触发生产部署。不要运行 `vercel --prod`，不要创建新 Vercel 项目，也不要手动覆盖生产别名。
-6. 推送后等待 Git 部署完成，检查 `https://poetry-blue.vercel.app` 返回成功状态，并确认页面标题、当天篇名与图片资源可访问。若 5 分钟后仍未更新，报告提交哈希和部署阻塞，不要重复提交相同内容。
+4. 提交前使用 GitHub 连接器重新读取远端 `main` 的 HEAD SHA。它必须与任务开始时记录的基线 SHA 一致；若已经变化，停止并报告并发更新，不得覆盖、强推或基于旧内容提交。
+5. 使用 GitHub 连接器的单次多文件提交能力，把所有相关源文件原子性地提交到 `main`，且整次任务只能产生一个提交。不得逐文件产生多个提交；如果连接器不支持单次多文件提交，停止并报告能力缺口。
+6. Vercel 项目已绑定该 GitHub 仓库，`main` 的新提交会自动触发生产部署。不要运行 `vercel --prod`，不要创建新 Vercel 项目，也不要手动覆盖生产别名。
+7. GitHub 连接器确认提交成功后，等待 Git 部署完成，检查 `https://poetry-blue.vercel.app` 返回成功状态，并确认页面标题、当天篇名与图片资源可访问。若 5 分钟后仍未更新，报告提交哈希和部署阻塞，不要重复提交相同内容。
 
 ## 最终报告
 
-仅报告：今日篇名与作者、三个候选及排除校验结果、引用来源、改动文件、测试结果、GitHub 提交哈希、Git 推送结果、Vercel 生产 URL；如失败，说明失败步骤与下一项可执行修复。不要用“应该可以”代替验证结果。
+仅报告：今日篇名与作者、三个候选及排除校验结果、引用来源、改动文件、测试结果、任务基线 SHA、GitHub 单次提交哈希、GitHub 连接器提交结果、Vercel 生产 URL；如失败，说明失败步骤与下一项可执行修复。不要用“应该可以”代替验证结果。
 
 ---
