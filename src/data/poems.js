@@ -1,5 +1,28 @@
 export const poems = [
   {
+    id: "spring-path",
+    layout: "spring-path",
+    title: "春行寄兴",
+    author: "李华",
+    dynasty: "唐",
+    learnedAt: "2026.08.23",
+    image: "/assets/poems/spring-path.webp",
+    lines: ["宜阳城下草萋萋", "涧水东流复向西", "芳树无人花自落", "春山一路鸟空啼"],
+    notes: [
+      { term: "宜阳", text: "古县名，唐代地名，在今河南洛阳一带。首句以城下茂盛春草开篇。" },
+      { term: "萋萋", text: "草木茂盛的样子。“涧水东流复向西”写溪流随山势回折。" },
+      { term: "芳树", text: "春日开花的树木。“无人”与“花自落”写花开花落而少有人迹。" },
+      { term: "空啼", text: "只听鸟声在春山中啼鸣。“空”使一路春色多了一层清寂。" },
+    ],
+    translation: "宜阳城下春草茂盛，山涧溪水曲折流转，向东又折向西。满山花树无人观赏，花自开自落；沿着春山一路前行，只听见鸟声在空山里啼鸣。",
+    appreciation: "全诗四句都写行旅所见，却从“萋萋”的草色与回折的涧水，逐步写到无人花落、一路鸟啼。前两句有流动的春意，后两句骤然空下来：“无人”“自”“空”连续削去人的参与，让明媚春山显出清寂。李华没有交代具体感怀，只借花落与鸟声留下余味；景物越有生机，行路者所感到的幽静也越深。",
+    studyCopy: {
+      dictationTitle: "把一路春山写回来",
+      dictationSuccess: "四句都对，春山的路径已经记住了。",
+      recitationHint: "沿着这一步的景物，在心里接出下一句。",
+    },
+  },
+  {
     id: "xianyang-rain",
     layout: "xianyang-rain",
     title: "咸阳值雨",
