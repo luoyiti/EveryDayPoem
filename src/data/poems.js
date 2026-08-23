@@ -1,5 +1,28 @@
 export const poems = [
   {
+    id: "xianyang-rain",
+    layout: "xianyang-rain",
+    title: "咸阳值雨",
+    author: "温庭筠",
+    dynasty: "唐",
+    learnedAt: "2026.08.23",
+    image: "/assets/poems/xianyang-rain.webp",
+    lines: ["咸阳桥上雨如悬", "万点空濛隔钓船", "还似洞庭春水色", "晓云将入岳阳天"],
+    notes: [
+      { term: "咸阳桥", text: "唐时渭水上的桥名。“雨如悬”写雨脚密集，仿佛一道悬在空中的水帘。" },
+      { term: "空濛", text: "烟雨迷茫的样子。“隔”写雨幕遮断视线，远处钓船若隐若现。" },
+      { term: "还似", text: "犹如、好像。眼前渭水雨景引出对洞庭湖春日水色的联想。" },
+      { term: "晓云", text: "清晨的云气。“晓云”是现代通行本用字；部分旧刻本作“晚云”。" },
+    ],
+    translation: "咸阳桥上，密集的雨脚仿佛悬在空中；万点雨丝织成迷蒙的水幕，把远处的钓船隔在视线之外。眼前渭水的烟雨，很像洞庭湖春日的水色；清晨的云气，仿佛正向岳阳一带的天空漫去。",
+    appreciation: "全诗不从风声写雨，而先用“悬”定住雨势：万点雨脚把桥、河与钓船隔成层层水幕。后两句忽然越过眼前的渭水，以联想接到千里之外的洞庭、岳阳，近景因此被推向辽阔。诗中不以愁语点染，只保留凝神观看的清旷；末尾一个“入”字又让云水继续流动，使静景悄然远去。",
+    studyCopy: {
+      dictationTitle: "让雨色留在字里",
+      dictationSuccess: "一字不差，四层雨幕已经记住了。",
+      recitationHint: "在心里说出这一句，再轻触雨幕查看。",
+    },
+  },
+  {
     id: "maple-night",
     layout: "maple-night",
     title: "枫桥夜泊",

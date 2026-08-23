@@ -28,6 +28,39 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--amber-brigh
 .brand--dark { color: #282a27; }
 .eyebrow { font-family: var(--sans); font-size: 12px; letter-spacing: .22em; text-transform: uppercase; }
 
+/* 咸阳值雨：四层雨幕 */
+.xianyang-rain { color: #f3eadc; background: #263b4a; }
+.xianyang-rain .scene img { animation-duration: 24s; }
+.rain-heading { position: absolute; z-index: 3; top: 10vh; left: 5.4vw; }
+.rain-heading h1 { margin: 0; font-size: clamp(34px, 3.2vw, 50px); font-weight: 400; letter-spacing: .18em; text-shadow: 0 3px 22px rgba(0,0,0,.66); }
+.rain-heading p { margin: 11px 0 0; color: #c8d2d6; font-family: var(--sans); font-size: 13px; letter-spacing: .2em; text-shadow: 0 2px 12px rgba(0,0,0,.7); }
+.rain-history { position: absolute; z-index: 5; top: 38px; right: 42px; display: flex; align-items: center; gap: 9px; border: 0; background: transparent; color: #e2e8e8; cursor: pointer; font-family: var(--sans); font-size: 13px; letter-spacing: .12em; text-shadow: 0 2px 12px rgba(0,0,0,.75); }
+.rain-stage { position: absolute; z-index: 2; inset: 0; }
+.rain-layers { position: absolute; top: 29vh; left: 5.5vw; display: grid; gap: 17px; }
+.rain-layers button { display: grid; grid-template-columns: 28px 1px; gap: 12px; align-items: center; width: 45px; height: 54px; border: 0; background: transparent; color: rgba(222,231,232,.58); padding: 0; cursor: pointer; font-family: var(--sans); font-size: 12px; letter-spacing: .08em; text-align: right; transition: color .25s ease; }
+.rain-layers button i { display: block; width: 1px; height: 100%; background: currentColor; transform: scaleY(.45); transition: transform .3s ease, box-shadow .3s ease; }
+.rain-layers button.is-active { color: #edb76f; }
+.rain-layers button.is-active i { transform: scaleY(1); box-shadow: 0 0 14px rgba(237,183,111,.75); }
+.rain-reading { position: absolute; top: 39vh; left: 27vw; width: min(62vw, 940px); }
+.rain-count { display: block; color: #b9c6ca; font-family: var(--sans); font-size: 11px; letter-spacing: .22em; text-shadow: 0 2px 9px rgba(0,0,0,.75); }
+.rain-active-line { margin: 24px 0 0; color: #efbd7c; font-size: clamp(37px, 4.5vw, 68px); font-weight: 400; line-height: 1.35; letter-spacing: .11em; white-space: nowrap; text-shadow: 0 4px 24px rgba(4,12,18,.92); animation: rain-line-in .42s ease both; }
+.rain-note { width: min(430px, 43vw); margin-top: 24px; padding-left: 18px; border-left: 1px solid rgba(218,231,233,.42); color: #d7e0e1; font-family: var(--sans); text-shadow: 0 2px 12px rgba(0,0,0,.88); }
+.rain-note strong { display: block; margin-bottom: 6px; color: #efbd7c; font-size: 13px; font-weight: 500; letter-spacing: .16em; }
+.rain-note p { margin: 0; font-size: 13px; line-height: 1.9; letter-spacing: .04em; }
+.rain-step-actions { display: flex; gap: 24px; margin-top: 24px; }
+.rain-step-actions button { border: 0; border-bottom: 1px solid rgba(220,231,232,.48); background: transparent; color: #dce5e6; padding: 7px 0; cursor: pointer; font-family: var(--sans); font-size: 12px; letter-spacing: .12em; }
+.rain-step-actions button:disabled { opacity: .28; cursor: default; }
+.rain-detail { position: absolute; z-index: 4; top: 25vh; right: 5.4vw; width: min(390px, 28vw); padding: 3px 0 3px 22px; border-left: 1px solid rgba(237,183,111,.56); color: #edf0ed; text-shadow: 0 2px 13px rgba(0,0,0,.92); animation: panel-in .35s ease both; }
+.rain-detail header { display: flex; align-items: center; justify-content: space-between; color: #efbd7c; font-size: 13px; letter-spacing: .2em; }
+.rain-detail header button { border: 0; background: transparent; color: inherit; cursor: pointer; }
+.rain-detail > p { margin: 14px 0 0; font-family: var(--sans); font-size: 14px; line-height: 2.05; letter-spacing: .04em; }
+.rain-tools { position: absolute; z-index: 5; inset: auto 0 0; height: 92px; display: grid; grid-template-columns: repeat(5, minmax(72px, 1fr)); padding: 0 5vw 0 20vw; background: rgba(7,18,26,.78); border-top: 1px solid rgba(220,231,232,.18); }
+.rain-tools button { position: relative; border: 0; border-right: 1px solid rgba(220,231,232,.16); background: transparent; color: #dbe3e3; cursor: pointer; font-family: var(--sans); font-size: 14px; letter-spacing: .17em; }
+.rain-tools button:last-child { border-right: 0; }
+.rain-tools button::after { content: ""; position: absolute; left: 50%; right: 50%; bottom: 0; height: 2px; background: #efbd7c; transition: left .25s ease, right .25s ease; }
+.rain-tools button:hover, .rain-tools button.is-active { color: #f1bd75; }
+.rain-tools button.is-active::after { left: 29%; right: 29%; }
+
 /* 枫桥夜泊：夜航舱窗 */
 .maple-night { color: var(--ivory); }
 .maple-tint { position: absolute; inset: 0; z-index: -2; background: rgba(1, 8, 12, .16); pointer-events: none; }
@@ -146,8 +179,11 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--amber-brigh
 @keyframes panel-in { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes sheet-in { from { opacity: 0; transform: translateY(16px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes bell-ring { 0%,100% { transform: rotate(0); } 35% { transform: rotate(12deg); } 70% { transform: rotate(-12deg); } }
+@keyframes rain-line-in { from { opacity: .25; transform: translateX(18px); } to { opacity: 1; transform: translateX(0); } }
 
 @media (max-width: 1100px) {
+  .rain-reading { left: 23vw; width: 70vw; }
+  .rain-detail { top: auto; right: 4vw; bottom: 122px; width: 340px; padding: 18px; border: 1px solid rgba(237,183,111,.36); background: rgba(8,20,28,.9); }
   .maple-reading { left: 15vw; width: 62vw; min-width: 0; }
   .verse-note { right: calc(100% + 24px); width: 130px; }
   .detail-panel { right: 128px; top: auto; bottom: 40px; width: 270px; }
@@ -158,6 +194,25 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--amber-brigh
   .poem-page { min-height: 100svh; overflow-y: auto; }
   .scene { position: fixed; }
   .brand { top: 24px; left: 22px; font-size: 14px; }
+  .xianyang-rain .scene img { object-position: 42% center !important; }
+  .rain-heading { top: 82px; left: 22px; }
+  .rain-heading h1 { font-size: 31px; }
+  .rain-heading p { font-size: 11px; }
+  .rain-history { top: 24px; right: 20px; font-size: 12px; }
+  .rain-stage { position: relative; min-height: 100svh; padding: 176px 22px 132px; }
+  .rain-layers { position: static; display: flex; gap: 0; width: 100%; margin-bottom: 11vh; }
+  .rain-layers button { grid-template-columns: 1fr; grid-template-rows: 20px 1px; gap: 8px; width: auto; height: 34px; flex: 1; text-align: center; }
+  .rain-layers button i { width: 100%; height: 1px; transform: scaleX(.45); }
+  .rain-layers button.is-active i { transform: scaleX(1); }
+  .rain-reading { position: static; width: auto; }
+  .rain-active-line { margin-top: 17px; font-size: clamp(29px, 8.2vw, 36px); letter-spacing: .07em; }
+  .rain-note { width: auto; margin-top: 20px; }
+  .rain-note p { font-size: 12px; line-height: 1.8; }
+  .rain-step-actions { margin-top: 20px; }
+  .rain-detail { position: fixed; top: auto; right: 14px; left: 14px; bottom: 84px; width: auto; max-height: 42svh; overflow-y: auto; padding: 18px; background: rgba(8,20,28,.96); }
+  .rain-detail > p { font-size: 13px; line-height: 1.9; }
+  .rain-tools { position: fixed; height: 70px; padding: 0; background: rgba(6,17,24,.94); }
+  .rain-tools button { font-size: 12px; letter-spacing: .08em; }
   .maple-night .scene img { object-position: 62% center !important; }
   .maple-reading { position: relative; top: auto; left: auto; width: auto; min-width: 0; padding: 108px 26px 156px; }
   .poem-heading { margin-bottom: 48px; }

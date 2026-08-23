@@ -44,7 +44,7 @@ function HistoryDrawer({ open, onClose, onSelect, currentId, progress }) {
     <aside className={`history-drawer ${open ? "is-open" : ""}`} aria-hidden={!open} inert={open ? undefined : true}>
       <header className="history-header">
         <div>
-          <span className="eyebrow">已读 · 三首</span>
+          <span className="eyebrow">已读 · {poems.length}首</span>
           <h2>往日诗笺</h2>
         </div>
         <button className="icon-button" onClick={onClose} aria-label="关闭诗笺集">
@@ -125,7 +125,7 @@ function StudyOverlay({ poem, mode, onClose, onComplete }) {
           <div className="dictation-content">
             <div>
               <span className="eyebrow">不看原文，写下你记得的句子</span>
-              <h2 id="study-title">让钟声留在字里</h2>
+              <h2 id="study-title">{poem.studyCopy?.dictationTitle || "让钟声留在字里"}</h2>
             </div>
             <div className="dictation-lines">
               {poem.lines.map((line, index) => {
@@ -151,7 +151,7 @@ function StudyOverlay({ poem, mode, onClose, onComplete }) {
               })}
             </div>
             <div className="study-actions">
-              {checked && <p>{score === poem.lines.length ? "一字不差，今夜的钟声已经记住了。" : `写对 ${score} 句，再沿着原句读一遍。`}</p>}
+              {checked && <p>{score === poem.lines.length ? (poem.studyCopy?.dictationSuccess || "一字不差，今夜的钟声已经记住了。") : `写对 ${score} 句，再沿着原句读一遍。`}</p>}
               <button className="primary-button" onClick={submitDictation}>核对默写</button>
             </div>
           </div>
@@ -162,7 +162,7 @@ function StudyOverlay({ poem, mode, onClose, onComplete }) {
             <button className={`recite-line ${hidden ? "is-hidden" : ""}`} onClick={() => setHidden((value) => !value)}>
               {poem.lines[reciteIndex]}
             </button>
-            <p>{hidden ? "在心里说出这一句，再轻触水面查看。" : poem.notes[reciteIndex].text}</p>
+            <p>{hidden ? (poem.studyCopy?.recitationHint || "在心里说出这一句，再轻触水面查看。") : poem.notes[reciteIndex].text}</p>
             <div className="study-actions">
               <button className="quiet-button" onClick={() => setHidden((value) => !value)}>{hidden ? "显出原句" : "遮住原句"}</button>
               <button className="primary-button" onClick={advanceRecitation}>{reciteIndex === poem.lines.length - 1 ? "完成背诵" : "下一句"}</button>
@@ -330,6 +330,82 @@ function SpringDawn({ poem, onHistory, onStudy }) {
   );
 }
 
+function XianyangRain({ poem, onHistory, onStudy }) {
+  const [activeLine, setActiveLine] = useState(0);
+  const [detail, setDetail] = useState("annotation");
+  const detailTitle = detail === "translation" ? "译文" : "赏析";
+  const detailContent = detail === "translation" ? poem.translation : poem.appreciation;
+
+  function moveLine(offset) {
+    setActiveLine((index) => Math.min(poem.lines.length - 1, Math.max(0, index + offset)));
+    setDetail("annotation");
+  }
+
+  return (
+    <main className="poem-page xianyang-rain">
+      <PageImage src={poem.image} position="center center" />
+      <Brand />
+
+      <header className="rain-heading">
+        <h1>{poem.title}</h1>
+        <p>{poem.dynasty} · {poem.author}</p>
+      </header>
+
+      <button className="rain-history" onClick={onHistory}>
+        <BookOpenText size={18} weight="light" /> 往日诗笺
+      </button>
+
+      <section className="rain-stage" aria-labelledby="rain-active-line">
+        <nav className="rain-layers" aria-label="逐句阅读">
+          {poem.lines.map((line, index) => (
+            <button
+              className={activeLine === index ? "is-active" : ""}
+              key={line}
+              onClick={() => { setActiveLine(index); setDetail("annotation"); }}
+              aria-label={`阅读第 ${index + 1} 句：${line}`}
+              aria-current={activeLine === index ? "step" : undefined}
+            >
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <i aria-hidden="true" />
+            </button>
+          ))}
+        </nav>
+
+        <div className="rain-reading">
+          <span className="rain-count">第 {activeLine + 1} / {poem.lines.length} 句</span>
+          <p id="rain-active-line" className="rain-active-line" aria-live="polite">{poem.lines[activeLine]}</p>
+          <div className="rain-note" aria-live="polite">
+            <strong>{poem.notes[activeLine].term}</strong>
+            <p>{poem.notes[activeLine].text}</p>
+          </div>
+          <div className="rain-step-actions">
+            <button onClick={() => moveLine(-1)} disabled={activeLine === 0}>上一层</button>
+            <button onClick={() => moveLine(1)} disabled={activeLine === poem.lines.length - 1}>下一层雨</button>
+          </div>
+        </div>
+      </section>
+
+      {detail !== "annotation" && (
+        <aside className="rain-detail" aria-live="polite">
+          <header>
+            <span>{detailTitle}</span>
+            <button onClick={() => setDetail("annotation")} aria-label={`关闭${detailTitle}`}><X size={17} /></button>
+          </header>
+          <p>{detailContent}</p>
+        </aside>
+      )}
+
+      <nav className="rain-tools" aria-label="诗词学习">
+        <button className={detail === "annotation" ? "is-active" : ""} onClick={() => setDetail("annotation")}>注释</button>
+        <button className={detail === "translation" ? "is-active" : ""} onClick={() => setDetail("translation")}>译文</button>
+        <button className={detail === "appreciation" ? "is-active" : ""} onClick={() => setDetail("appreciation")}>赏析</button>
+        <button onClick={() => onStudy("recitation")}>背诵</button>
+        <button onClick={() => onStudy("dictation")}>默写</button>
+      </nav>
+    </main>
+  );
+}
+
 export function App() {
   const initialId = window.location.hash.slice(1);
   const [currentId, setCurrentId] = useState(poemsById[initialId] ? initialId : dailyPoemId);
@@ -382,6 +458,7 @@ export function App() {
   return (
     <div className="app-shell">
       <div inert={historyOpen || studyMode ? true : undefined}>
+        {poem.layout === "xianyang-rain" && <XianyangRain poem={poem} onHistory={() => setHistoryOpen(true)} onStudy={setStudyMode} />}
         {poem.layout === "maple-night" && <MapleNight poem={poem} onHistory={() => setHistoryOpen(true)} onStudy={setStudyMode} />}
         {poem.layout === "snow-river" && <SnowRiver poem={poem} onHistory={() => setHistoryOpen(true)} onStudy={setStudyMode} />}
         {poem.layout === "spring-dawn" && <SpringDawn poem={poem} onHistory={() => setHistoryOpen(true)} onStudy={setStudyMode} />}

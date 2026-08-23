@@ -1,3 +1,48 @@
+# Design QA — 每日古诗文 / 咸阳值雨
+
+## Visual brief
+
+- 时间与地点：唐代咸阳桥畔的清晨，桥、渭水与远处钓船被一场密雨拉开层次。
+- 天气与色温：雨脚密集，冷蓝灰为主，天际保留少量清晨暖光。
+- 材质与意象：湿木桥面、银灰水面、薄雾、细密雨线与一叶钓船。
+- 构图：桥体由左侧斜入画面，阅读区沿水面展开；四个编号雨点控制诗句层次，底部学习工具栏承接译文、赏析、背诵、默写与历史入口。该构图、阅读顺序与交互层级均不同于既有三篇。
+
+## Comparison target
+
+- Source visual concept: `/workspace/scratch/78d982c0f7ed/generated_images/exec-02617a99-c906-4e92-9542-5e7d4ed8c026.png`
+- Production image asset: `public/assets/poems/xianyang-rain.webp` (1487 × 1058 WebP)
+- Desktop evidence: `/tmp/everydaypoem-qa/xianyang-rain-desktop.png`
+- Mobile evidence: `/tmp/everydaypoem-qa/xianyang-rain-mobile.png`
+- Browser runner: Playwright fallback, used because the configured cloud-browser runtime was unavailable in this workspace. QA evidence stays outside the repository.
+
+## Viewports and interaction coverage
+
+- Desktop: 1440 × 1024; image loaded; document width matched viewport; no console errors or page errors.
+- Mobile: 390 × 844; background crop remained proportional; document width matched viewport; no text or control clipping; no console errors or page errors.
+- Tested all four rain-layer verse selectors and their annotations; translation and appreciation panels; recitation hide/reveal; four-line dictation to success; four-item history drawer and close action.
+
+## Fidelity ledger
+
+- Copy: title, dynasty, author and all four lines match the selected text; the above-fold reading view introduces no unapproved weather facts, badges or secondary labels.
+- Spatial rhythm: the left bridge mass, open water reading field, distant boat and bottom study rail preserve the visual brief without repeating the layouts of the other poems.
+- Typography: literary serif display type carries the title and active verse; compact sans-serif navigation keeps the learning controls legible against the image.
+- Palette and asset treatment: cool blue-gray rain and water dominate, balanced by a restrained dawn highlight; the background is a dedicated generated raster asset, not CSS or SVG substitute art.
+- Responsive behavior: desktop uses vertical numbered rain marks; mobile converts them into a compact horizontal sequence and shortens the active reading block without hiding core controls.
+- Interaction and accessibility: active-state labels, semantic buttons, visible focus, reduced-motion handling, overlay dismissal and keyboard-friendly inputs are present.
+
+## Findings and verification
+
+No actionable P0, P1 or P2 mismatches remain. Showing one active line at a time, rather than rendering all lines faintly as in the concept, is an intentional implementation decision: it keeps the rain-layer interaction readable on the 390 px viewport while retaining direct access to every line.
+
+- `npm run check:library`: passed; 60 junior-high + 72 senior-high = 132 exclusions, 5 matcher checks passed.
+- `npm run build`: passed; Vite production bundle and hosting resources generated.
+- `npm run test:sites`: passed; 4 tests passed, 0 failed.
+- `node --test tests/daily-poem-content.test.mjs`: passed; daily selection, exact text, notes, appreciation length, distinct layout and image asset verified.
+
+final result: passed
+
+---
+
 # Design QA — 每日古诗文 / 枫桥夜泊
 
 ## Comparison target
