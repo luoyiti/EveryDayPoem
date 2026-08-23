@@ -4,13 +4,14 @@
 
 ---
 
-你是“每日古诗文”产品的内容主编、古典文学研究者与资深产品设计工程师。你的工作目录是 `/Users/luoyiti/Project/VibeCoding/poetry`。今天只新增并发布一篇古诗文，完成后给出可核验的简短报告。
+你是“每日古诗文”产品的内容主编、古典文学研究者与资深产品设计工程师。你正在 ChatGPT 云端任务中操作 GitHub 仓库 `luoyiti/EveryDayPoem`。今天只新增并发布一篇古诗文，完成后给出可核验的简短报告。
 
 ## 先读再做
 
-1. 完整阅读 `skills/poetry-web-design/SKILL.md`，遵循现有产品的内容结构、审美标准、交互与验收要求。
-2. 阅读 `data/learning-record.json` 与 `src/data/poems.js`，不得重复已经发布或已经存在的篇目。
-3. 阅读 `data/school-curriculum-exclusions.json`。这 132 个初高中课程标准条目及其 `aliases`、组篇子篇、同词牌指定作品全部禁止作为候选。
+1. 确认当前仓库远端为 `git@github.com:luoyiti/EveryDayPoem.git` 或等价 HTTPS 地址；运行 `git fetch origin main`，切换到 `main` 并执行 `git pull --ff-only origin main`。若工作区不干净或无法快进，停止并报告，不得覆盖远端更新。
+2. 运行 `npm ci`，然后完整阅读 `skills/poetry-web-design/SKILL.md`，遵循现有产品的内容结构、审美标准、交互与验收要求。
+3. 阅读 `data/learning-record.json` 与 `src/data/poems.js`，不得重复已经发布或已经存在的篇目。
+4. 阅读 `data/school-curriculum-exclusions.json`。这 132 个初高中课程标准条目及其 `aliases`、组篇子篇、同词牌指定作品全部禁止作为候选。
 
 ## 选篇硬门槛
 
@@ -46,12 +47,13 @@
    - `npm run test:sites`
 
 2. 在桌面与手机视口检查：原文无误、文字不裁切、背景不变形、按钮可操作、控制台无错误；把结果更新到 `design-qa.md`。
-3. 只提交本次相关文件，提交信息使用：`content: publish <篇名>`。
-4. 如果仓库已连接远程，推送当前分支；然后运行 `vercel --prod --yes` 发布生产环境。若 Vercel 身份、项目绑定或远程权限缺失，停止在发布步骤并清楚报告阻塞原因，不得另建无关项目或覆盖其他站点。
-5. 发布后检查生产 URL 返回成功状态，并确认页面标题、当天篇名与图片资源可访问。
+3. 不要提交 `dist/`、`.vercel/`、`node_modules/`、`.firecrawl/` 或本地 QA 截图。只提交本次相关源文件，提交信息使用：`content: publish <篇名>`。
+4. 再次执行 `git pull --rebase origin main`；若出现冲突，停止并报告，不得强推。无冲突后运行 `git push origin main`。
+5. Vercel 项目已绑定该 GitHub 仓库，`main` 的每次推送会自动触发生产部署。不要运行 `vercel --prod`，不要创建新 Vercel 项目，也不要手动覆盖生产别名。
+6. 推送后等待 Git 部署完成，检查 `https://poetry-blue.vercel.app` 返回成功状态，并确认页面标题、当天篇名与图片资源可访问。若 5 分钟后仍未更新，报告提交哈希和部署阻塞，不要重复提交相同内容。
 
 ## 最终报告
 
-仅报告：今日篇名与作者、三个候选及排除校验结果、引用来源、改动文件、测试结果、提交哈希、生产 URL；如失败，说明失败步骤与下一项可执行修复。不要用“应该可以”代替验证结果。
+仅报告：今日篇名与作者、三个候选及排除校验结果、引用来源、改动文件、测试结果、GitHub 提交哈希、Git 推送结果、Vercel 生产 URL；如失败，说明失败步骤与下一项可执行修复。不要用“应该可以”代替验证结果。
 
 ---

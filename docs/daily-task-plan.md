@@ -5,7 +5,9 @@
 - 任务名称：`每日古诗文 · 选篇、设计与发布`
 - 频率：每天一次
 - 时间：`06:30 Asia/Shanghai`
-- 工作目录：`/Users/luoyiti/Project/VibeCoding/poetry`
+- GitHub 仓库：`luoyiti/EveryDayPoem`
+- 生产分支：`main`
+- 线上地址：`https://poetry-blue.vercel.app`
 - 提示词：`prompts/chatgpt-work-daily-task.md`
 
 ## 每次运行的关卡
@@ -14,9 +16,11 @@
 2. 提出 3 个候选，并通过机器排除校验与人工别名复核。
 3. 研究、编辑当天内容，生成独立视觉资产并实现页面。
 4. 完成构建、自动测试和桌面/手机设计验收。
-5. 提交、推送、部署 Vercel 生产环境并验证线上页面。
+5. 提交并推送 GitHub `main`，由 Vercel Git 集成自动部署生产环境，再验证线上页面。
 
 任何关卡失败都停止发布，保留诊断信息；下一次运行优先修复失败项，不在错误状态上继续生成新内容。
+
+仓库内的 GitHub Actions 只负责校验排除库、构建和托管测试，不会自动修改内容。每天的选篇与页面更新只由 ChatGPT 云端任务执行，避免两个定时任务同时写入 `main`。
 
 ## 排除策略
 

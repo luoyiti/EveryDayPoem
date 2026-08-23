@@ -1,15 +1,17 @@
-name: Publish daily poem
+name: Validate poetry content
 
 on:
-  schedule:
-    - cron: "30 22 * * *"
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  select-and-publish:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,12 +20,6 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run daily
+      - run: npm run check:library
       - run: npm run build
-      - name: Commit the daily selection
-        run: |
-          git config user.name "daily-poetry-agent"
-          git config user.email "daily-poetry-agent@users.noreply.github.com"
-          git add src/data/daily.js data/learning-record.json
-          git diff --cached --quiet || git commit -m "content: publish daily poem"
-          git push
+      - run: npm run test:sites

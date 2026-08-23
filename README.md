@@ -2,6 +2,9 @@
 
 一个纯前端、可静态部署的沉浸式古诗文学习产品。首页每天选择一首诗，提供阅读、注释、译文、赏析、背诵和默写；历史诗篇保留独立视觉页面。
 
+- GitHub：[`luoyiti/EveryDayPoem`](https://github.com/luoyiti/EveryDayPoem)
+- 生产站：[`poetry-blue.vercel.app`](https://poetry-blue.vercel.app)
+
 ## 本地运行
 
 ```bash
@@ -21,9 +24,11 @@ npm run dev
 
 ## 每日发布
 
-`npm run daily` 会先应用初高中课程标准排除库，再从未发布诗篇中更新当天入口与记录。`npm run check:exclusion -- --title "篇名" --author "作者" --incipit "首句"` 可在生成内容前检查单篇候选。GitHub Actions 每天北京时间 06:30 执行选择流程；仓库连接 Vercel 后，提交会自动触发静态部署。
+`npm run daily` 会先应用初高中课程标准排除库，再从未发布诗篇中更新当天入口与记录。`npm run check:exclusion -- --title "篇名" --author "作者" --incipit "首句"` 可在生成内容前检查单篇候选。
 
-在 ChatGPT Work 中创建“每天 06:30，Asia/Shanghai”的任务并粘贴 `prompts/chatgpt-work-daily-task.md`，即可把选篇、研究、视觉生成、实现、测试和生产发布串成一次完整运行。更简洁的配置说明见 `docs/daily-task-plan.md`。
+在 ChatGPT Work 中创建“每天 06:30，Asia/Shanghai”的任务并粘贴 `prompts/chatgpt-work-daily-task.md`，即可把选篇、研究、视觉生成、实现、测试、GitHub 提交和生产发布串成一次完整运行。Vercel 已绑定 `main` 分支，云端任务只需推送 GitHub，生产站会自动部署；无需在任务中保存 Vercel Token。更简洁的配置说明见 `docs/daily-task-plan.md`。
+
+GitHub Actions 在 push 和 pull request 时运行内容库校验、构建与托管测试，但不会自动修改诗篇数据，避免与 ChatGPT 每日任务产生并发写入。
 
 生产构建会把提示词、运行方案和排除库同步发布到 `/resources/`，便于线上查看与下载。
 
