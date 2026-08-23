@@ -1,0 +1,53 @@
+/* 兰溪棹歌：水镜与涨潮 */
+.lanxi-moon { color: #edf3f0; background: #0d1d28; }
+.lanxi-moon .scene img { object-position: center center; animation-duration: 26s; }
+.lanxi-shade { position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, rgba(4,13,19,.83) 0%, rgba(5,16,22,.48) 46%, rgba(3,12,17,.16) 72%, rgba(2,9,13,.32) 100%); }
+.lanxi-heading { position: absolute; z-index: 3; top: 13vh; left: 7vw; }
+.lanxi-heading > span { font-family: var(--sans); color: #a8bab9; font-size: 11px; letter-spacing: .28em; }
+.lanxi-heading h1 { margin: 14px 0 8px; font-size: clamp(38px, 4vw, 58px); font-weight: 400; letter-spacing: .16em; text-shadow: 0 4px 26px rgba(0,0,0,.72); }
+.lanxi-heading p { margin: 0; color: #bac9c7; font-family: var(--sans); font-size: 13px; letter-spacing: .18em; }
+.lanxi-history { position: absolute; z-index: 5; top: 38px; right: 42px; display: flex; align-items: center; gap: 9px; border: 0; background: transparent; color: #d8e6e2; cursor: pointer; font-family: var(--sans); font-size: 13px; letter-spacing: .12em; text-shadow: 0 2px 12px rgba(0,0,0,.72); }
+.lanxi-reading { position: absolute; z-index: 3; left: 7vw; right: 8vw; top: 34vh; display: grid; grid-template-columns: minmax(520px, 760px) minmax(260px, 340px); gap: clamp(40px, 6vw, 110px); align-items: end; }
+.lanxi-verses { display: grid; gap: clamp(15px, 2.4vh, 27px); }
+.lanxi-verses button { position: relative; display: grid; grid-template-columns: 34px minmax(0, 1fr); align-items: center; gap: 18px; width: 100%; border: 0; background: transparent; color: rgba(225,238,234,.63); padding: 9px 0 13px; cursor: pointer; text-align: left; transition: color .28s ease, transform .28s ease; }
+.lanxi-verses button i { position: absolute; left: 52px; right: 0; bottom: 0; height: 1px; background: currentColor; opacity: .28; transform-origin: left; transform: scaleX(.58); transition: transform .38s ease, opacity .38s ease; }
+.lanxi-verses button:hover { color: #f0f4ef; transform: translateX(4px); }
+.lanxi-verses button.is-active { color: #d9d2a9; }
+.lanxi-verses button.is-active i { transform: scaleX(1); opacity: .72; box-shadow: 0 1px 18px rgba(220,218,171,.35); }
+.lanxi-number { font-family: var(--sans); font-size: 10px; letter-spacing: .12em; color: #869a9b; }
+.lanxi-line { font-size: clamp(27px, 3vw, 46px); line-height: 1.3; letter-spacing: .08em; text-shadow: 0 4px 22px rgba(0,0,0,.82); }
+.lanxi-annotation { padding: 0 0 11px 20px; border-left: 1px solid rgba(210,220,207,.42); color: #d4dfdb; font-family: var(--sans); text-shadow: 0 2px 14px rgba(0,0,0,.82); }
+.lanxi-annotation strong { display: block; margin-bottom: 8px; color: #ddd6aa; font-size: 13px; font-weight: 500; letter-spacing: .18em; }
+.lanxi-annotation p { margin: 0; font-size: 13px; line-height: 2; letter-spacing: .04em; }
+.lanxi-detail { position: absolute; z-index: 6; right: 7vw; top: 18vh; width: min(370px, 29vw); padding: 20px 22px; border-top: 1px solid rgba(221,214,170,.58); background: rgba(6,18,25,.82); color: #e6ece8; backdrop-filter: blur(8px); }
+.lanxi-detail header { display: flex; align-items: center; justify-content: space-between; color: #ddd6aa; font-size: 13px; letter-spacing: .2em; }
+.lanxi-detail header button { border: 0; background: transparent; color: inherit; cursor: pointer; }
+.lanxi-detail > p { margin: 14px 0 0; font-family: var(--sans); font-size: 14px; line-height: 2.05; letter-spacing: .04em; }
+.lanxi-tools { position: absolute; z-index: 5; left: 7vw; bottom: 5vh; display: flex; gap: 28px; }
+.lanxi-tools button { position: relative; border: 0; background: transparent; color: #c8d6d2; padding: 8px 0; cursor: pointer; font-family: var(--sans); font-size: 13px; letter-spacing: .16em; }
+.lanxi-tools button::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: #ddd6aa; transition: right .28s ease; }
+.lanxi-tools button:hover, .lanxi-tools button.is-active { color: #e5dfb5; }
+.lanxi-tools button.is-active::after { right: 0; }
+
+@media (max-width: 900px) {
+  .lanxi-reading { right: 5vw; grid-template-columns: minmax(430px, 1fr) 260px; gap: 38px; }
+  .lanxi-line { font-size: clamp(25px, 3.6vw, 38px); }
+}
+
+@media (max-width: 760px) {
+  .lanxi-moon { min-height: 100svh; overflow-y: auto; }
+  .lanxi-moon .scene img { object-position: 61% center !important; }
+  .lanxi-shade { position: fixed; background: linear-gradient(180deg, rgba(4,13,19,.52), rgba(4,13,19,.78) 52%, rgba(3,11,16,.94)); }
+  .lanxi-heading { position: relative; top: auto; left: auto; padding: 96px 22px 0; }
+  .lanxi-heading h1 { font-size: 35px; }
+  .lanxi-history { top: 24px; right: 20px; font-size: 12px; }
+  .lanxi-reading { position: relative; left: auto; right: auto; top: auto; display: block; padding: 52px 22px 150px; }
+  .lanxi-verses { gap: 16px; }
+  .lanxi-verses button { grid-template-columns: 28px 1fr; gap: 12px; }
+  .lanxi-verses button i { left: 40px; }
+  .lanxi-line { font-size: clamp(24px, 7.2vw, 31px); letter-spacing: .05em; }
+  .lanxi-annotation { margin: 34px 0 0 40px; }
+  .lanxi-detail { position: fixed; top: auto; left: 14px; right: 14px; bottom: 86px; width: auto; max-height: 42svh; overflow-y: auto; padding: 18px; background: rgba(5,16,22,.96); }
+  .lanxi-tools { position: fixed; left: 0; right: 0; bottom: 0; height: 70px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; padding: 0 8px; background: rgba(4,13,19,.95); border-top: 1px solid rgba(222,231,226,.15); }
+  .lanxi-tools button { font-size: 12px; letter-spacing: .07em; }
+}
