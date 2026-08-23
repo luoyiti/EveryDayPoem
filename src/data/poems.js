@@ -1,0 +1,58 @@
+export const poems = [
+  {
+    id: "maple-night",
+    layout: "maple-night",
+    title: "枫桥夜泊",
+    author: "张继",
+    dynasty: "唐",
+    learnedAt: "2026.08.23",
+    image: "/assets/poems/maple-night.png",
+    lines: ["月落乌啼霜满天", "江枫渔火对愁眠", "姑苏城外寒山寺", "夜半钟声到客船"],
+    notes: [
+      { term: "月落", text: "月亮西沉，乌鸦啼叫，寒霜的气息铺满夜空。" },
+      { term: "江枫", text: "江边枫树与渔火相对，旅人的愁绪久久不能入眠。" },
+      { term: "姑苏", text: "今江苏苏州。寒山寺位于城西枫桥附近。" },
+      { term: "夜半钟声", text: "寺钟穿过深夜与江面，抵达停泊的客船。" },
+    ],
+    translation: "月亮已落，乌鸦啼叫，寒气仿佛凝成满天霜色。面对江边的枫树和渔船灯火，我怀着愁绪难以入眠。姑苏城外寂静的寒山寺，在半夜敲响的钟声传到了我的客船。",
+    appreciation: "诗从月落、乌啼、霜天写到江枫与渔火，冷暖明暗彼此映照。末句把画面忽然交给声音：一声钟越过空间，也越过旅人的失眠，让整夜的乡愁有了回响。",
+  },
+  {
+    id: "snow-river",
+    layout: "snow-river",
+    title: "江雪",
+    author: "柳宗元",
+    dynasty: "唐",
+    learnedAt: "2026.08.18",
+    image: "/assets/poems/snow-river.png",
+    lines: ["千山鸟飞绝", "万径人踪灭", "孤舟蓑笠翁", "独钓寒江雪"],
+    notes: [
+      { term: "绝", text: "绝迹。山间再看不到飞鸟。" },
+      { term: "踪灭", text: "人的踪迹也被大雪完全遮没。" },
+      { term: "蓑笠翁", text: "披蓑衣、戴斗笠的老人。" },
+      { term: "独钓", text: "在寒冷雪江上独自垂钓。" },
+    ],
+    translation: "所有山岭都不见飞鸟，所有道路都没有人的踪迹。只有一叶孤舟上，披蓑戴笠的老人独自在寒江雪中垂钓。",
+    appreciation: "前两句把世界写到近乎空无，后两句才落下一个极小的人影。辽阔与孤独彼此映照，也显出不随环境改变的清醒与坚持。",
+  },
+  {
+    id: "spring-dawn",
+    layout: "spring-dawn",
+    title: "春晓",
+    author: "孟浩然",
+    dynasty: "唐",
+    learnedAt: "2026.08.12",
+    image: "/assets/poems/spring-dawn.png",
+    lines: ["春眠不觉晓", "处处闻啼鸟", "夜来风雨声", "花落知多少"],
+    notes: [
+      { term: "不觉晓", text: "春夜酣睡，不知不觉天已亮了。" },
+      { term: "啼鸟", text: "醒来听见四处清脆的鸟鸣。" },
+      { term: "夜来", text: "回想昨夜曾听见风雨的声音。" },
+      { term: "知多少", text: "不知道庭院里又落了多少春花。" },
+    ],
+    translation: "春天睡得香甜，不知不觉已经天亮。醒来只听见到处鸟儿啼鸣。想起夜里的风雨声，不知道花儿又落了多少。",
+    appreciation: "诗从睡醒后的听觉写起，再由鸟鸣倒转回昨夜风雨。没有直接描绘花落，却让惜春之情在最后一句轻轻出现。",
+  },
+];
+
+export const poemsById = Object.fromEntries(poems.map((poem) => [poem.id, poem]));

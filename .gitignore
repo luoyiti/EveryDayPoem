@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.DS_Store
+
+# Local visual-QA captures; the report itself remains versioned.
+implementation-*.png
+design-qa-comparison-*.png
+.vercel
+.firecrawl/

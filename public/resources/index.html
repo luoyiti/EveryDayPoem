@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <title>每日古诗文 · 每日任务资源</title>
+    <style>
+      :root { font-family: "Noto Sans SC", system-ui, sans-serif; color: #eee6d5; background: #111917; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 32px 20px; background: radial-gradient(circle at 80% 15%, #2f4b42 0, transparent 38%), linear-gradient(145deg, #0b1110, #18231f); }
+      main { width: min(760px, 100%); padding: clamp(28px, 6vw, 64px); border: 1px solid rgba(238, 230, 213, .18); background: rgba(8, 14, 12, .72); box-shadow: 0 32px 90px rgba(0, 0, 0, .38); }
+      small { letter-spacing: .18em; color: #bca978; }
+      h1 { margin: 18px 0 14px; font: 400 clamp(34px, 6vw, 62px) / 1.15 "Noto Serif SC", serif; }
+      p { color: #c8c9c1; line-height: 1.8; max-width: 58ch; }
+      nav { display: grid; gap: 12px; margin-top: 36px; }
+      a { color: inherit; text-decoration: none; padding: 18px 20px; border: 1px solid rgba(238, 230, 213, .14); background: rgba(255, 255, 255, .035); transition: .2s ease; }
+      a:hover { transform: translateX(5px); border-color: #bca978; background: rgba(188, 169, 120, .08); }
+      strong { display: block; margin-bottom: 5px; font-weight: 500; }
+      span { color: #8f9993; font-size: 13px; }
+      footer { margin-top: 42px; color: #7d8882; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <small>DAILY POETRY · WORK RESOURCES</small>
+      <h1>每日任务资源</h1>
+      <p>用于 ChatGPT Work 的每日生产提示词、执行方案，以及教育部初高中课程标准古诗文排除库。</p>
+      <nav>
+        <a href="./chatgpt-work-daily-task.md"><strong>每日任务提示词</strong><span>选篇、研究、视觉、实现、测试与 Vercel 发布</span></a>
+        <a href="./daily-task-plan.md"><strong>运行方案</strong><span>建议时间、关卡与失败策略</span></a>
+        <a href="./school-curriculum-exclusions.json"><strong>初高中排除库</strong><span>初中 60 篇 + 高中 72 篇，机器可读 JSON</span></a>
+      </nav>
+      <footer>来源：中华人民共和国教育部课程标准</footer>
+    </main>
+  </body>
+</html>
