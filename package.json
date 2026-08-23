@@ -11,7 +11,7 @@
     "check:library": "node scripts/validate-exclusion-library.mjs",
     "check:daily": "node --test tests/daily-poem-content.test.mjs",
     "verify:offline": "npm run check:library && npm run check:daily",
-    "build": "npm run verify:offline && vite build && node scripts/prepare-sites-build.mjs",
+    "build": "npm run verify:offline && vite build && node scripts/prepare-sites-build.mjs && npm run test:sites",
     "preview": "vite preview",
     "test:sites": "node --test tests/sites-worker.test.mjs"
   },
