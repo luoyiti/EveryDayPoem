@@ -8,9 +8,21 @@
 ## 本地运行
 
 ```bash
-npm install
+npm run bootstrap
 npm run dev
 ```
+
+`npm run bootstrap` 会先尝试 npm 离线缓存，再检查 registry DNS；若云端执行环境无法解析 `registry.npmjs.org`，会以退出码 `20` 明确标记为网络能力缺口，而不是把它误判为仓库或依赖声明损坏。
+
+## 校验命令
+
+```bash
+npm run verify:offline   # 不依赖第三方包：排除库 + 当天发布契约
+npm run build            # 会先自动运行 verify:offline
+npm run test:sites
+```
+
+Vercel 的生产构建同样执行 `npm run build`，因此即使 ChatGPT 云端任务本地无法安装 npm 依赖，远端部署仍会再次执行内容契约和完整 Vite 构建。
 
 ## 内容结构
 
@@ -20,16 +32,16 @@ npm run dev
 - `data/school-curriculum-exclusions.json`：教育部初中 60 篇与高中 72 篇古诗文排除库。
 - `skills/poetry-web-design/SKILL.md`：新增诗篇前必须读取的审美与实现规范。
 - `public/assets/poems/`：每首诗独立生成的视觉资产。
-- `prompts/chatgpt-work-daily-task.md`：可直接用于 ChatGPT Work 每日任务的完整提示词。
+- `prompts/chatgpt-work-daily-task.md`：每日任务的唯一权威发布协议。
+- `scripts/bootstrap-deps.mjs`：云端 npm 缓存/DNS/安装的有界恢复逻辑。
+- `tests/daily-poem-content.test.mjs`：不绑定具体篇目的通用每日发布契约。
 
 ## 每日发布
 
-`npm run daily` 会先应用初高中课程标准排除库，再从未发布诗篇中更新当天入口与记录。`npm run check:exclusion -- --title "篇名" --author "作者" --incipit "首句"` 可在生成内容前检查单篇候选。
+当前定时任务为每天 `07:30 Asia/Shanghai`。定时任务本身只需读取 `main` 当前 SHA 下的 `prompts/chatgpt-work-daily-task.md` 并执行，不再复制一份容易漂移的长提示词。
 
-在 ChatGPT Work 中创建“每天 06:30，Asia/Shanghai”的任务并粘贴 `prompts/chatgpt-work-daily-task.md`，即可把选篇、研究、视觉生成、实现、测试、GitHub 提交和生产发布串成一次完整运行。Vercel 已绑定 `main` 分支，云端任务只需推送 GitHub，生产站会自动部署；无需在任务中保存 Vercel Token。更简洁的配置说明见 `docs/daily-task-plan.md`。
+`npm run check:exclusion -- --title "篇名" --author "作者" --incipit "首句"` 可在生成内容前检查单篇候选。`npm run daily` 的日期计算固定使用 `Asia/Shanghai`，避免北京时间清晨运行时被 UTC 记到前一天。
 
-GitHub Actions 在 push 和 pull request 时运行内容库校验、构建与托管测试，但不会自动修改诗篇数据，避免与 ChatGPT 每日任务产生并发写入。
+Vercel 已绑定 `main` 分支；GitHub 提交成功后由 Git 集成自动部署，无需在任务中保存 Vercel Token。GitHub Actions 在 push 和 pull request 时先执行网络无关内容校验，再安装锁定依赖、构建和运行托管测试。
 
 生产构建会把提示词、运行方案和排除库同步发布到 `/resources/`，便于线上查看与下载。
-
-新增诗篇时，先按 Design Skill 完成独立视觉方案与页面组件，再把数据加入诗库。当前 MVP 内含《枫桥夜泊》《江雪》《春晓》三种完全不同的页面构图。

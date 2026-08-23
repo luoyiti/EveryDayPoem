@@ -6,9 +6,12 @@
   "scripts": {
     "dev": "vite",
     "daily": "node scripts/select-daily-poem.mjs",
+    "bootstrap": "node scripts/bootstrap-deps.mjs",
     "check:exclusion": "node scripts/check-school-exclusion.mjs",
     "check:library": "node scripts/validate-exclusion-library.mjs",
-    "build": "vite build && node scripts/prepare-sites-build.mjs",
+    "check:daily": "node --test tests/daily-poem-content.test.mjs",
+    "verify:offline": "npm run check:library && npm run check:daily",
+    "build": "npm run verify:offline && vite build && node scripts/prepare-sites-build.mjs",
     "preview": "vite preview",
     "test:sites": "node --test tests/sites-worker.test.mjs"
   },

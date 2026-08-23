@@ -15,3 +15,7 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Each poem must have a meaningfully different composition and interaction model, not merely a new background or palette.
 - Real web imagery and ImageGen assets are welcome when they materially improve the poem-specific atmosphere.
 - Keep the daily poem dominant. History and study tools should remain discoverable without turning the product into a dashboard.
+- Daily publishing is allowed to run in a cloud environment where GitHub/npm DNS is unavailable locally. GitHub connector data is the remote source of truth; npm bootstrap exit code `20` is a network condition, not a content failure.
+- `npm run verify:offline` is the minimum pre-submit contract and must stay dependency-free; `npm run build` must continue to include it so Vercel independently gates production content.
+- All daily publication dates use `Asia/Shanghai`. Do not derive the publication date from UTC.
+- The scheduled-task prompt should point to `prompts/chatgpt-work-daily-task.md` instead of duplicating that file's full text.

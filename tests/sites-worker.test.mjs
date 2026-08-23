@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
-import { access } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 import worker from "../worker/index.js";
+import { dailyPoemId } from "../src/data/daily.js";
+import { poemsById } from "../src/data/poems.js";
 
 test("serves existing static assets without a fallback", async () => {
   const calls = [];
@@ -65,4 +67,11 @@ test("emits the files required by Sites packaging", async () => {
   await access(new URL("../dist/client/index.html", import.meta.url));
   await access(new URL("../dist/server/index.js", import.meta.url));
   await access(new URL("../dist/.openai/hosting.json", import.meta.url));
+});
+
+test("build output exposes the current daily poem in the static page title", async () => {
+  const poem = poemsById[dailyPoemId];
+  assert.ok(poem);
+  const html = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
+  assert.ok(html.includes(`<title>每日古诗文 · ${poem.title}</title>`));
 });

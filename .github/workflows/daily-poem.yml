@@ -13,13 +13,18 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - run: npm run check:library
-      - run: npm run build
-      - run: npm run test:sites
+      - name: Network-independent content checks
+        run: npm run verify:offline
+      - name: Install locked dependencies
+        run: npm ci --prefer-offline --no-audit --fund=false
+      - name: Production build
+        run: npm run build
+      - name: Sites packaging tests
+        run: npm run test:sites
