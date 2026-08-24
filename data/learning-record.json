@@ -1,10 +1,39 @@
 {
   "learned": [
-    { "id": "jinling-ferry", "date": "2026-08-24", "status": "published" },
-    { "id": "lanxi-moon", "date": "2026-08-23", "status": "published" },
-    { "id": "xianyang-rain", "date": "2026-08-23", "status": "published" },
-    { "id": "maple-night", "date": "2026-08-23", "status": "published" },
-    { "id": "snow-river", "date": "2026-08-18", "status": "published" },
-    { "id": "spring-dawn", "date": "2026-08-12", "status": "published" }
+    {
+      "id": "taicheng-rain",
+      "date": "2026-08-25",
+      "status": "published"
+    },
+    {
+      "id": "jinling-ferry",
+      "date": "2026-08-24",
+      "status": "published"
+    },
+    {
+      "id": "lanxi-moon",
+      "date": "2026-08-23",
+      "status": "published"
+    },
+    {
+      "id": "xianyang-rain",
+      "date": "2026-08-23",
+      "status": "published"
+    },
+    {
+      "id": "maple-night",
+      "date": "2026-08-23",
+      "status": "published"
+    },
+    {
+      "id": "snow-river",
+      "date": "2026-08-18",
+      "status": "published"
+    },
+    {
+      "id": "spring-dawn",
+      "date": "2026-08-12",
+      "status": "published"
+    }
   ]
 }

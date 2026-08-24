@@ -1,0 +1,44 @@
+/* 台城：春色如旧，王朝如梦。左侧历史断面，右侧残存风景。 */
+.taicheng-rain { background:#d8d4c6; color:#1b241f; }
+.taicheng-rain .brand { color:#1d2b25; text-shadow:none; }
+.taicheng-image { position:absolute; z-index:-2; top:0; right:0; width:43vw; height:100%; overflow:hidden; background:#18231f; }
+.taicheng-image img { width:100%; height:100%; object-fit:cover; object-position:center; filter:saturate(.62) contrast(1.02) brightness(.76); }
+.taicheng-image::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(216,212,198,.94) 0, rgba(216,212,198,.22) 24%, rgba(7,18,15,.08) 62%, rgba(7,18,15,.38) 100%); }
+.taicheng-history { position:absolute; z-index:5; top:36px; right:38px; display:flex; align-items:center; gap:8px; border:0; background:rgba(10,20,17,.34); color:#edf0e8; padding:9px 12px; cursor:pointer; font-family:var(--sans); font-size:12px; letter-spacing:.12em; }
+.taicheng-heading { position:absolute; top:13vh; left:7vw; z-index:2; }
+.taicheng-heading > span { font-family:var(--sans); font-size:12px; letter-spacing:.24em; color:#657268; }
+.taicheng-heading h1 { margin:13px 0 7px; font-size:clamp(44px,5vw,72px); line-height:1; font-weight:500; letter-spacing:.16em; }
+.taicheng-heading p { margin:0; font-family:var(--sans); font-size:13px; letter-spacing:.16em; color:#697069; }
+.taicheng-strata { position:absolute; z-index:2; top:34vh; left:7vw; width:min(52vw,760px); border-top:1px solid rgba(38,50,43,.22); }
+.taicheng-strata button { position:relative; display:grid; grid-template-columns:42px 1fr 52px; gap:18px; align-items:center; width:100%; min-height:82px; padding:0; border:0; border-bottom:1px solid rgba(38,50,43,.20); background:transparent; color:#364139; cursor:pointer; text-align:left; transition:color .22s ease, padding-left .22s ease; }
+.taicheng-strata button:hover, .taicheng-strata button.is-active { color:#111a16; padding-left:10px; }
+.taicheng-number { font-family:var(--sans); font-size:11px; letter-spacing:.12em; color:#818a82; }
+.taicheng-line { font-size:clamp(24px,2.35vw,36px); letter-spacing:.09em; white-space:nowrap; }
+.taicheng-strata button i { display:block; justify-self:end; width:36px; height:1px; background:currentColor; opacity:.25; transition:width .25s ease, opacity .25s ease; }
+.taicheng-strata button.is-active i { width:52px; opacity:.8; }
+.taicheng-note { position:absolute; z-index:3; left:7vw; bottom:13vh; width:min(47vw,650px); display:grid; grid-template-columns:120px 1fr; gap:22px; font-family:var(--sans); }
+.taicheng-note strong { font-size:12px; letter-spacing:.15em; font-weight:500; color:#58655c; }
+.taicheng-note p { margin:0; font-size:13px; line-height:1.95; color:#455149; }
+.taicheng-detail { position:absolute; z-index:4; top:22vh; right:5vw; width:min(31vw,430px); padding:22px 24px; background:rgba(14,24,20,.88); color:#eef0e8; border-left:1px solid rgba(220,224,210,.34); }
+.taicheng-detail header { display:flex; align-items:center; justify-content:space-between; color:#c9d0bf; font-family:var(--sans); font-size:12px; letter-spacing:.2em; }
+.taicheng-detail header button { border:0; background:transparent; color:inherit; cursor:pointer; }
+.taicheng-detail p { margin:16px 0 0; font-family:var(--sans); font-size:14px; line-height:2.05; letter-spacing:.03em; }
+.taicheng-tools { position:absolute; z-index:5; right:4vw; bottom:4vh; display:flex; gap:7px; padding:8px; background:rgba(11,21,18,.76); }
+.taicheng-tools button { border:0; border-bottom:1px solid rgba(238,240,232,.24); background:transparent; color:#dfe4da; padding:9px 12px; cursor:pointer; font-family:var(--sans); font-size:12px; letter-spacing:.1em; }
+.taicheng-tools button:hover, .taicheng-tools button.is-active { color:#f2d8a3; border-color:#f2d8a3; }
+@media (max-width:760px) {
+  .taicheng-rain { min-height:100svh; overflow-y:auto; background:#d8d4c6; padding-bottom:92px; }
+  .taicheng-rain .brand { position:fixed; }
+  .taicheng-image { position:relative; z-index:-1; width:100%; height:34svh; min-height:260px; }
+  .taicheng-image::after { background:linear-gradient(180deg,rgba(7,18,15,.08),rgba(216,212,198,.2) 68%,#d8d4c6 100%); }
+  .taicheng-history { position:fixed; top:22px; right:18px; }
+  .taicheng-heading { position:relative; top:auto; left:auto; margin:-12px 24px 0; }
+  .taicheng-heading h1 { font-size:42px; }
+  .taicheng-strata { position:relative; top:auto; left:auto; width:auto; margin:36px 24px 0; }
+  .taicheng-strata button { grid-template-columns:28px 1fr 24px; gap:10px; min-height:70px; }
+  .taicheng-line { font-size:22px; white-space:normal; }
+  .taicheng-note { position:relative; left:auto; bottom:auto; width:auto; margin:28px 24px 36px; grid-template-columns:1fr; gap:8px; }
+  .taicheng-detail { position:fixed; top:auto; right:14px; left:14px; bottom:84px; width:auto; max-height:44svh; overflow:auto; }
+  .taicheng-tools { position:fixed; right:0; bottom:0; width:100%; min-height:70px; display:grid; grid-template-columns:repeat(5,1fr); gap:0; padding:0; background:rgba(12,22,18,.95); }
+  .taicheng-tools button { padding:0 4px; font-size:11px; }
+}
