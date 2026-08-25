@@ -1,0 +1,243 @@
+.watershed-page {
+  --ws-bg: #111615;
+  --ws-ink: #e8e1d3;
+  --ws-muted: #969a90;
+  --ws-water: #8ea9a5;
+  --ws-path: #b88a5b;
+  --ws-line: rgba(232, 225, 211, .18);
+  min-height: 100dvh;
+  background: var(--ws-bg);
+  color: var(--ws-ink);
+  font-family: "Noto Serif SC", "Songti SC", "STSong", serif;
+  overflow: hidden;
+}
+
+.watershed-page button,
+.watershed-page input { font: inherit; }
+.watershed-page button { color: inherit; }
+.watershed-page button:focus-visible,
+.watershed-page input:focus-visible { outline: 2px solid #d6b27d; outline-offset: 4px; }
+
+.watershed-topline {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 12;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 38px;
+  background: linear-gradient(180deg, rgba(17, 22, 21, .95), rgba(17, 22, 21, 0));
+  pointer-events: none;
+}
+
+.watershed-brand,
+.watershed-history-trigger { pointer-events: auto; }
+.watershed-brand { letter-spacing: .32em; font-size: 15px; }
+.watershed-brand i { display: block; width: 42px; height: 1px; margin-top: 10px; background: currentColor; opacity: .45; }
+.watershed-history-trigger { display: inline-flex; align-items: center; gap: 8px; border: 0; background: transparent; font-family: "Noto Sans SC", sans-serif; font-size: 12px; letter-spacing: .12em; cursor: pointer; }
+
+.watershed-stage {
+  position: relative;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(210px, 22vw, 340px);
+  padding: 96px clamp(28px, 5vw, 78px) 102px;
+  gap: clamp(36px, 6vw, 104px);
+}
+
+.watershed-copy { position: relative; min-width: 0; max-width: 900px; }
+.watershed-heading { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 0 22px; }
+.watershed-heading > span { grid-column: 1 / -1; color: var(--ws-muted); font-family: "Noto Sans SC", sans-serif; font-size: 11px; letter-spacing: .24em; }
+.watershed-heading h1 { margin: 20px 0 0; font-size: clamp(38px, 4vw, 62px); font-weight: 500; letter-spacing: .12em; }
+.watershed-heading p { margin: 0 0 8px; color: #a9aaa1; font-size: 14px; letter-spacing: .16em; }
+
+.watershed-route {
+  position: relative;
+  margin-top: clamp(46px, 7vh, 82px);
+  min-height: 430px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .78fr);
+  grid-template-rows: repeat(4, minmax(78px, auto));
+  column-gap: clamp(38px, 8vw, 128px);
+}
+
+.route-spine { position: absolute; top: 13px; bottom: 28px; left: 58px; width: 54%; pointer-events: none; }
+.route-spine i { position: absolute; top: 0; left: 0; width: 1px; height: 100%; transform-origin: top; transition: transform .7s cubic-bezier(.22,.8,.2,1), left .7s cubic-bezier(.22,.8,.2,1); }
+.route-person { background: linear-gradient(180deg, rgba(184,138,91,.16), var(--ws-path) 25%, rgba(184,138,91,.2)); }
+.route-water { background: linear-gradient(180deg, rgba(142,169,165,.12), var(--ws-water) 25%, rgba(142,169,165,.2)); left: 12px !important; }
+.watershed-page.is-separated .route-person { transform: rotate(-13deg) scaleY(.88); }
+.watershed-page.is-separated .route-water { left: 46px !important; transform: rotate(15deg) scaleY(.95); }
+
+.watershed-verse {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--ws-line);
+  background: transparent;
+  padding: 8px 0 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: transform .3s ease, color .3s ease, border-color .3s ease;
+}
+.watershed-verse > span { font-family: "Noto Sans SC", sans-serif; color: #737b75; font-size: 10px; letter-spacing: .12em; }
+.watershed-verse strong { font-size: clamp(24px, 2.6vw, 39px); font-weight: 400; letter-spacing: .08em; }
+.watershed-verse:hover { transform: translateX(4px); }
+.watershed-verse.is-active { color: #f0d5ad; border-color: rgba(214,178,125,.5); }
+.watershed-verse.is-active > span { color: #d6b27d; }
+.watershed-verse--0,
+.watershed-verse--1 { grid-column: 1; }
+.watershed-verse--2 { grid-column: 1; }
+.watershed-verse--3 { grid-column: 2; grid-row: 4; align-self: end; }
+.watershed-verse--3 strong { color: #c8d8d5; }
+
+.watershed-note {
+  width: min(600px, 78%);
+  margin-top: 26px;
+  padding-left: 18px;
+  border-left: 1px solid rgba(214,178,125,.44);
+  font-family: "Noto Sans SC", sans-serif;
+}
+.watershed-note span { color: #d6b27d; font-size: 12px; letter-spacing: .14em; }
+.watershed-note p { margin: 8px 0 0; color: #b3b8af; font-size: 13px; line-height: 1.9; }
+
+.watershed-image {
+  align-self: stretch;
+  position: relative;
+  margin-top: 52px;
+  overflow: hidden;
+  border-left: 1px solid rgba(232,225,211,.15);
+}
+.watershed-image img { width: 100%; height: 66vh; min-height: 520px; object-fit: cover; object-position: center; display: block; filter: saturate(.72) contrast(.95) brightness(.78); }
+.watershed-image::after { content: ""; position: absolute; inset: 0 0 auto; height: 66vh; min-height: 520px; background: linear-gradient(180deg, rgba(17,22,21,.15), transparent 42%, rgba(17,22,21,.5)); pointer-events: none; }
+.watershed-image > div { position: absolute; z-index: 2; left: 26px; right: 20px; bottom: 28px; display: grid; gap: 8px; }
+.watershed-image span { color: #c5c2b8; font-family: "Noto Sans SC", sans-serif; font-size: 10px; letter-spacing: .2em; }
+.watershed-image strong { max-width: 220px; font-size: 17px; line-height: 1.7; font-weight: 400; }
+
+.watershed-tools {
+  position: fixed;
+  z-index: 14;
+  left: clamp(28px, 5vw, 78px);
+  bottom: 24px;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+.watershed-tools button { display: inline-flex; align-items: center; gap: 7px; border: 0; border-bottom: 1px solid rgba(232,225,211,.25); background: transparent; padding: 7px 0; color: #aeb1a9; font-family: "Noto Sans SC", sans-serif; font-size: 12px; letter-spacing: .12em; cursor: pointer; }
+.watershed-tools button:hover,
+.watershed-tools button.is-active { color: #e8d3b4; border-color: #c39a68; }
+
+.watershed-detail {
+  position: fixed;
+  z-index: 16;
+  right: clamp(250px, 25vw, 380px);
+  bottom: 38px;
+  width: min(440px, 36vw);
+  padding: 22px 24px;
+  border: 1px solid rgba(232,225,211,.15);
+  background: rgba(16, 20, 19, .94);
+  box-shadow: 0 20px 60px rgba(0,0,0,.28);
+}
+.watershed-detail header { display: flex; align-items: center; justify-content: space-between; color: #d6b27d; font-size: 12px; letter-spacing: .18em; }
+.watershed-detail header button { border: 0; background: transparent; cursor: pointer; }
+.watershed-detail > p { margin: 14px 0 0; color: #c0c3ba; font-family: "Noto Sans SC", sans-serif; font-size: 13px; line-height: 2; }
+
+.watershed-history {
+  position: fixed;
+  z-index: 31;
+  inset: 0 0 0 auto;
+  width: min(520px, 92vw);
+  padding: 42px 46px;
+  background: #e7dfd0;
+  color: #252923;
+  transform: translateX(100%);
+  transition: transform .4s cubic-bezier(.22,.8,.22,1);
+  overflow-y: auto;
+}
+.watershed-history.is-open { transform: translateX(0); }
+.watershed-history header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 28px; border-bottom: 1px solid rgba(37,41,35,.2); }
+.watershed-history header span { font-family: "Noto Sans SC", sans-serif; font-size: 11px; letter-spacing: .2em; color: #727468; }
+.watershed-history header h2 { margin: 9px 0 0; font-size: 32px; font-weight: 500; letter-spacing: .08em; }
+.watershed-history header button { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid rgba(37,41,35,.25); border-radius: 50%; background: transparent; cursor: pointer; }
+.watershed-history-list { display: grid; }
+.watershed-history-list > button { display: grid; grid-template-columns: 34px 1fr auto; align-items: baseline; gap: 10px; width: 100%; border: 0; border-bottom: 1px solid rgba(37,41,35,.13); background: transparent; color: inherit; padding: 20px 0; text-align: left; cursor: pointer; }
+.watershed-history-list > button > span { color: #858478; font-family: "Noto Sans SC", sans-serif; font-size: 10px; }
+.watershed-history-list strong { font-size: 20px; font-weight: 500; }
+.watershed-history-list small { grid-column: 2; color: #66695f; font-family: "Noto Sans SC", sans-serif; }
+.watershed-history-list em { grid-column: 3; grid-row: 1 / span 2; color: #8a897e; font-family: "Noto Sans SC", sans-serif; font-size: 10px; font-style: normal; }
+.watershed-history-list > button.is-current strong { color: #8a5f38; }
+.watershed-scrim { position: fixed; z-index: 30; inset: 0; border: 0; background: rgba(0,0,0,.5); opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+.watershed-scrim.is-visible { opacity: 1; pointer-events: auto; }
+
+.watershed-study { position: fixed; z-index: 40; inset: 0; display: grid; place-items: center; }
+.watershed-study-backdrop { position: absolute; inset: 0; border: 0; background: rgba(4,8,7,.8); backdrop-filter: blur(9px); }
+.watershed-study-sheet { position: relative; width: min(880px, calc(100vw - 42px)); max-height: calc(100dvh - 42px); overflow-y: auto; background: #e8e0d2; color: #262a25; box-shadow: 0 34px 100px rgba(0,0,0,.46); }
+.watershed-study-sheet > header { display: flex; align-items: center; justify-content: space-between; padding: 19px 24px; border-bottom: 1px solid rgba(38,42,37,.16); color: #696b61; font-family: "Noto Sans SC", sans-serif; font-size: 11px; letter-spacing: .12em; }
+.watershed-study-sheet > header button { display: inline-flex; align-items: center; gap: 6px; border: 0; background: transparent; cursor: pointer; }
+.watershed-recite,
+.watershed-dictation { padding: clamp(34px, 6vw, 74px); }
+.watershed-kicker { margin: 0; color: #7a776e; font-family: "Noto Sans SC", sans-serif; font-size: 11px; letter-spacing: .18em; }
+.watershed-recite h2,
+.watershed-dictation h2 { margin: 14px 0 34px; font-size: clamp(30px, 4vw, 48px); font-weight: 500; letter-spacing: .04em; }
+.watershed-recite-line { width: 100%; min-height: 150px; border: 0; background: transparent; color: #2a2d28; font-size: clamp(36px, 6vw, 64px); letter-spacing: .09em; cursor: pointer; transition: filter .3s ease, opacity .3s ease; }
+.watershed-recite-line.is-hidden { filter: blur(11px); opacity: .13; }
+.watershed-recite > p:last-of-type { min-height: 54px; color: #6e7067; font-family: "Noto Sans SC", sans-serif; font-size: 13px; line-height: 1.9; }
+.watershed-inputs { display: grid; gap: 18px; }
+.watershed-inputs label { display: grid; grid-template-columns: 28px 1fr 22px; gap: 12px; align-items: center; }
+.watershed-inputs label > span { color: #8b887d; font-family: "Noto Sans SC", sans-serif; font-size: 10px; }
+.watershed-inputs input { width: 100%; border: 0; border-bottom: 1px solid rgba(38,42,37,.3); border-radius: 0; background: transparent; padding: 9px 0 12px; color: #272a25; font-size: clamp(20px, 2.4vw, 29px); letter-spacing: .08em; }
+.watershed-inputs small { grid-column: 2; color: #96594c; font-family: "Noto Sans SC", sans-serif; font-size: 12px; }
+.watershed-inputs .is-correct input { border-color: #57745c; }
+.watershed-inputs .is-wrong input { border-color: #96594c; }
+.watershed-study-actions { display: flex; align-items: center; justify-content: flex-end; gap: 16px; margin-top: 34px; }
+.watershed-study-actions > p { margin-right: auto; color: #686b62; font-family: "Noto Sans SC", sans-serif; font-size: 12px; }
+.watershed-study-actions button { border: 1px solid #484b44; background: transparent; padding: 11px 20px; cursor: pointer; letter-spacing: .08em; }
+.watershed-study-actions .solid { background: #31362f; color: #f0e7d8; }
+
+@media (max-width: 900px) {
+  .watershed-stage { grid-template-columns: 1fr 190px; gap: 34px; padding-left: 32px; padding-right: 32px; }
+  .watershed-route { column-gap: 30px; }
+  .watershed-note { width: 92%; }
+  .watershed-detail { right: 218px; width: min(420px, calc(100vw - 270px)); }
+}
+
+@media (max-width: 700px) {
+  .watershed-page { min-height: 100svh; overflow-y: auto; }
+  .watershed-topline { height: 68px; padding: 0 20px; }
+  .watershed-brand { font-size: 13px; }
+  .watershed-stage { min-height: 100svh; display: block; padding: 84px 20px 106px; }
+  .watershed-heading { grid-template-columns: 1fr; }
+  .watershed-heading h1 { margin-top: 14px; font-size: 38px; }
+  .watershed-heading p { margin-top: 7px; }
+  .watershed-image { height: 170px; margin: 30px 0 0; border: 0; border-top: 1px solid rgba(232,225,211,.15); }
+  .watershed-image img { width: 100%; height: 170px; min-height: 0; object-position: center 58%; }
+  .watershed-image::after { height: 170px; min-height: 0; }
+  .watershed-image > div { left: 18px; bottom: 14px; }
+  .watershed-image strong { font-size: 14px; }
+  .watershed-route { min-height: 390px; margin-top: 40px; grid-template-columns: 1fr .82fr; column-gap: 22px; grid-template-rows: repeat(4, minmax(74px, auto)); }
+  .route-spine { left: 37px; width: 60%; }
+  .watershed-verse { grid-template-columns: 26px 1fr; gap: 9px; padding-bottom: 12px; }
+  .watershed-verse strong { font-size: clamp(21px, 6.8vw, 28px); letter-spacing: .04em; }
+  .watershed-note { width: 100%; margin-top: 18px; padding-left: 13px; }
+  .watershed-note p { font-size: 12px; }
+  .watershed-tools { left: 0; right: 0; bottom: 0; height: 72px; padding: 0 12px; justify-content: space-around; gap: 4px; background: rgba(13,18,17,.96); border-top: 1px solid rgba(232,225,211,.12); }
+  .watershed-tools button { border: 0; padding: 9px 5px; font-size: 11px; letter-spacing: .05em; }
+  .watershed-tools button svg { display: none; }
+  .watershed-detail { position: fixed; left: 12px; right: 12px; bottom: 84px; width: auto; max-height: 42svh; overflow-y: auto; }
+  .watershed-history { padding: 30px 22px; }
+  .watershed-history-list > button { grid-template-columns: 28px 1fr; }
+  .watershed-history-list em { display: none; }
+  .watershed-study-sheet { width: calc(100vw - 18px); max-height: calc(100svh - 18px); }
+  .watershed-recite, .watershed-dictation { padding: 30px 20px; }
+  .watershed-study-actions { align-items: stretch; flex-direction: column; }
+  .watershed-study-actions > p { margin: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .watershed-page *, .watershed-page *::before, .watershed-page *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
