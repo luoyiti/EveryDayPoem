@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { App as LegacyApp } from "./AppLegacy.jsx";
 import { TaichengPage } from "./TaichengPage.jsx";
 import { WatershedPage } from "./WatershedPage.jsx";
+import { VillageNightPage } from "./VillageNightPage.jsx";
 import { poemsById } from "./data/poems.js";
 import { dailyPoemId } from "./data/daily.js";
 
@@ -18,6 +19,7 @@ export function App() {
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
   const poem = useMemo(() => poemsById[routeId] || poemsById[dailyPoemId], [routeId]);
+  if (poem.layout === "village-night") return <VillageNightPage poem={poem} onNavigate={(id) => { window.location.hash = id; }} />;
   if (poem.layout === "watershed-parting") return <WatershedPage poem={poem} onNavigate={(id) => { window.location.hash = id; }} />;
   if (poem.layout === "taicheng-rain") return <TaichengPage poem={poem} onNavigate={(id) => { window.location.hash = id; }} />;
   return <LegacyApp key={routeId} />;

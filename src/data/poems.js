@@ -1,5 +1,18 @@
 export const poems = [
   {
+    id: "village-night", layout: "village-night", title: "村夜", author: "白居易", dynasty: "唐", learnedAt: "2026.08.27", image: "/assets/poems/village-night.webp",
+    lines: ["霜草苍苍虫切切", "村南村北行人绝", "独出前门望野田", "月明荞麦花如雪"],
+    notes: [
+      { term: "霜草 · 苍苍", text: "经霜的秋草显得灰白苍茫；“切切”是虫声急促细密的样子，先从颜色与声音写出夜的清冷。" },
+      { term: "行人绝", text: "村南村北都看不到行人。“绝”不是道路消失，而是人迹断绝，把乡村秋夜写得格外空静。" },
+      { term: "独出前门", text: "诗人独自走出前门眺望田野。“出”是全诗转折：视线从封闭的村落边缘突然打开到旷野。" },
+      { term: "荞麦花如雪", text: "明月照在大片浅白的荞麦花上，远望仿佛铺了一层雪。这里写的是月色造成的视觉联想，并非真的降雪。" },
+    ],
+    translation: "经霜的秋草一片苍白，虫声切切，村南村北都不见行人。我独自走出前门眺望田野，只见明亮的月光照着大片荞麦花，洁白得仿佛铺了一层雪。",
+    appreciation: "前两句先把村夜压低：霜草苍苍，虫声切切，村南村北连一个行人也没有。第三句“独出前门”是全诗的结构转轴，人的一步向外，也让视野突然打开。末句月光照亮荞麦花，白得像雪，前面的冷寂没有消失，却被这片明亮重新安放。白居易几乎只用听觉、空路与月色，便把孤独写成了可以凝望的清景。",
+    studyCopy: { dictationTitle: "把月下荞麦写回来", dictationSuccess: "四句无误，霜草、空村与月白田野都已记住。", recitationHint: "依次抓住“霜草—无人—出门—花如雪”四个节点，再复述原句。" },
+  },
+  {
     id: "watershed-parting", layout: "watershed-parting", title: "过分水岭", author: "温庭筠", dynasty: "唐", learnedAt: "2026.08.26", image: "/assets/poems/watershed-parting.webp",
     lines: ["溪水无情似有情", "入山三日得同行", "岭头便是分头处", "惜别潺湲一夜声"],
     notes: [

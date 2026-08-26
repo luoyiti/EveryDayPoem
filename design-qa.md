@@ -1,3 +1,36 @@
+# Design QA — 每日古诗文 / 村夜
+
+## Visual brief
+
+- 时间与地点：秋夜乡村，从村落边缘走出前门，视线由近处霜草与空路突然打开到月下田野。
+- 天气与色温：原诗只明确“霜草”与“月明”，页面采用冷灰、靛蓝与月白；不额外添加雨雪天气。
+- 材质与核心意象：霜草、村路、门槛、空旷田野、月光与浅白荞麦花。
+- 视觉命题：前两句被压在暗色“门内”区域，读到“独出前门”后页面横向展开，第四句落到更明亮的月田；主交互“推门见月”直接回应第三句的空间转折。
+- 构图区别：不复用既有雨幕、水镜、渡口远望、台城历史断面、分水岭双轨、雪纸长卷或晨窗结构。
+
+## Asset and implementation
+
+- Image asset: `public/assets/poems/village-night.webp`, 960 × 600 WebP。来自本次任务中的 ImageGen 输出，经裁切仅保留无文字、无 UI 的生成式山林区域，再作冷色与门槛暗部处理；图像只承担氛围层，页面结构仍由 HTML/CSS 与阅读交互表达。
+- Layout: `village-night` 独立 React 页面，组件 `src/VillageNightPage.jsx`，样式 `src/village-night.css`。
+- 阅读顺序：四句沿“霜草 → 空村 → 出门 → 月田”展开；第三、四句在桌面端向右偏移，形成从封闭到开阔的视觉转折。
+- 学习路径：逐句注释、译文、赏析、背诵、默写和历史入口均可达；Escape 可关闭学习层。
+- Accessibility: 逐句按钮提供 `aria-current`，注释/详情使用 `aria-live`，学习层使用 dialog 语义，并提供 `prefers-reduced-motion`。
+- Responsive: 手机端将横向展开收为轻微错位的纵向序列，底部五项学习工具固定可达，详情层避开工具栏。
+
+## Verification
+
+- Baseline `npm run verify:offline`: passed before content changes; exclusion library contract 60 + 72 = 132，daily tests 2/2。
+- Candidate exclusion checks: 村夜 / 江楼旧感 / 宿骆氏亭寄怀崔雍崔衮均退出码 0；并人工对照当前 132 条课程排除库与学习记录，无重复。
+- `npm run bootstrap`: exit 20 with `DEPENDENCY_NETWORK_UNAVAILABLE` (`registry.npmjs.org` DNS unavailable).
+- Final `npm run verify:offline`: passed in the reconstructed workspace; daily-content tests 2/2 passed，赏析 134 字。
+- Source inspection: daily data contract、唯一布局分发、资源路径、逐句注释、译文、赏析、背诵、默写、历史入口、移动端 CSS 与 reduced-motion 均已检查。
+- Local Vite build / desktop-mobile browser runtime QA: 未执行；原因是 bootstrap 按仓库协议进入退出码 20 恢复路径，本地依赖不可用。最终 build gate 由 GitHub Actions 与 Vercel 对唯一提交执行。
+- Production status: pending the single Git commit's remote build and production runtime verification.
+
+final result: pending remote build gate
+
+---
+
 # Design QA — 每日古诗文 / 过分水岭
 
 ## Visual brief
