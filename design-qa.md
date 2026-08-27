@@ -1,3 +1,36 @@
+# Design QA — 每日古诗文 / 秋夜寄邱员外
+
+## Visual brief
+
+- 时间与地点：清凉秋夜，诗人散步所在的“此夜”与友人幽居的“彼山”被留白分隔；页面不把两地误画成同一现场。
+- 天气与色温：原诗只写“凉天”，因此采用蓝黑、松针灰绿与纸灰，不增加雨雪、月亮或灯火。
+- 材质与核心意象：暗色空气、空山、松针与松子；真实图像只作为极低对比度夜色纹理，主体叙事由空间留白与文字完成。
+- 视觉命题：前两句停在左侧“此夜”，第三句跨过中央距离线进入右侧“彼山”，第四句留在远端；一枚不可见但可想象的“松子落”以声音把两处空间连接。
+- 转折：第三句从实写自己的散步转入遥想友人的空山；构图、阅读顺序与既有村夜“推门”、分水岭“双轨”、台城“历史断面”、兰溪“水镜”等均不同。
+
+## Asset and implementation
+
+- Image asset: `public/assets/poems/autumn-letter-texture.webp`, 1200 × 900 WebP。来自本次任务 ImageGen 输出中的无文字、无 UI 深蓝夜空区域，经裁切、降饱和和轻微模糊后作为低对比度纹理；页面不把纹理中的细节解释为诗中史实。
+- Layout: `autumn-letter` 独立 React 页面，组件 `src/AutumnLetterPage.jsx`，样式 `src/autumn-letter.css`。
+- 阅读顺序：四句按“怀君 → 散步 → 空山 → 未眠”从左向右跨越中央距离线；前两句属于“此夜”，后两句属于“彼山”。
+- 学习路径：逐句注释、译文、赏析、背诵、默写与历史入口均可达；Escape 可关闭学习层。
+- Accessibility: 逐句按钮提供 `aria-current`，注释与详情使用 `aria-live`，学习层使用 dialog 语义，键盘焦点清晰，并提供 `prefers-reduced-motion`。
+- Responsive: 手机端仍保留左右空间的轻微错位和中央距离线，工具区固定在底部，详情层避开工具栏。
+
+## Verification
+
+- Baseline `npm run verify:offline`: passed before content changes; exclusion-library contract 60 + 72 = 132，daily tests 2/2。
+- Candidate exclusion checks: 秋夜寄邱员外 / 宿石邑山中 / 江楼感旧均退出码 0；并人工对照当前课程排除库、现有诗库与学习记录，无重复。
+- Text collation: display title uses the common modern title `秋夜寄邱员外`; alias `秋夜寄丘二十二员外` is recorded by《全唐诗》卷188。正文采用通行“空山松子落”，并在注释中说明《全唐诗》卷188作“山空松子落”。
+- `npm run bootstrap`: exit 20 with `DEPENDENCY_NETWORK_UNAVAILABLE` (`registry.npmjs.org` DNS unavailable).
+- Final `npm run verify:offline`: passed after final source edits; exclusion-library contract 60 + 72 = 132，daily tests 2/2。
+- Local Vite build / desktop-mobile browser runtime QA: not executed under the exit-20 recovery path; final build gate is GitHub Actions and Vercel for the single commit.
+- Production status: pending the single Git commit's remote build and production runtime verification.
+
+final result: pending remote build gate
+
+---
+
 # Design QA — 每日古诗文 / 村夜
 
 ## Visual brief

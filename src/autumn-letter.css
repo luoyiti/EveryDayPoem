@@ -1,0 +1,112 @@
+.autumn-letter-page {
+  --paper: #d9ddd6;
+  --muted: #8f9a95;
+  --line: rgba(207, 218, 211, .24);
+  min-height: 100dvh;
+  position: relative;
+  overflow: hidden;
+  color: var(--paper);
+  background: #07100f;
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  isolation: isolate;
+}
+.autumn-letter-page button, .autumn-letter-page input { font: inherit; }
+.autumn-letter-page button { color: inherit; }
+.autumn-letter-page button:focus-visible, .autumn-letter-page input:focus-visible { outline: 2px solid #b8c5ba; outline-offset: 4px; }
+.autumn-letter-texture { position: absolute; inset: 0 0 0 58%; width: 42%; height: 100%; object-fit: cover; opacity: .22; filter: saturate(.55) contrast(1.08); z-index: -3; }
+.autumn-letter-page::before { content: ""; position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, #07100f 0 47%, rgba(7,16,15,.95) 57%, rgba(7,16,15,.58) 100%); }
+.autumn-letter-grain { position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .18; background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 4px); mix-blend-mode: soft-light; }
+.autumn-letter-brand { position: absolute; z-index: 6; top: 34px; left: 40px; right: 40px; display: flex; align-items: center; justify-content: space-between; font-family: "Noto Sans SC", sans-serif; font-size: 13px; letter-spacing: .18em; color: #c9d0ca; }
+.autumn-letter-brand button { border: 0; border-bottom: 1px solid rgba(217,221,214,.38); background: transparent; padding: 7px 0; cursor: pointer; font-size: 12px; letter-spacing: .14em; }
+.autumn-letter-heading { position: absolute; top: 13vh; left: 8vw; z-index: 3; }
+.autumn-letter-heading > span { display: block; font-family: "Noto Sans SC", sans-serif; color: #77867f; font-size: 11px; letter-spacing: .24em; }
+.autumn-letter-heading h1 { margin: 13px 0 9px; font-size: clamp(37px, 4.2vw, 64px); font-weight: 400; letter-spacing: .12em; }
+.autumn-letter-heading p { margin: 0; color: #9aa59f; font-size: 14px; letter-spacing: .14em; }
+.autumn-letter-stage { position: absolute; inset: 0; }
+.autumn-letter-place { position: absolute; top: 31vh; display: grid; gap: 7px; color: #6f7c76; font-family: "Noto Sans SC", sans-serif; transition: color .35s ease, transform .35s ease; }
+.autumn-letter-place > span { font-size: 12px; letter-spacing: .42em; }
+.autumn-letter-place small { font-size: 10px; letter-spacing: .16em; }
+.autumn-letter-place--near { left: 8vw; }
+.autumn-letter-place--far { right: 8vw; text-align: right; }
+.is-near .autumn-letter-place--near, .is-far .autumn-letter-place--far { color: #c5cec8; transform: translateY(-4px); }
+.autumn-letter-verses { position: absolute; inset: 34vh 16vw auto 16vw; height: 43vh; }
+.autumn-letter-verse { position: absolute; display: grid; grid-template-columns: 28px auto; align-items: baseline; gap: 14px; border: 0; background: transparent; padding: 7px 0 10px; cursor: pointer; color: #929d97; text-align: left; transition: color .35s ease, transform .35s ease, opacity .35s ease; }
+.autumn-letter-verse small { font-family: "Noto Sans SC", sans-serif; font-size: 10px; letter-spacing: .12em; color: #63716a; }
+.autumn-letter-verse span { font-size: clamp(28px, 3.4vw, 48px); letter-spacing: .13em; white-space: nowrap; }
+.autumn-letter-verse::after { content: ""; position: absolute; left: 42px; right: 100%; bottom: 0; height: 1px; background: #c9d0ca; transition: right .35s ease; }
+.autumn-letter-verse.is-active { color: #e1e4dd; transform: translateY(-3px); }
+.autumn-letter-verse.is-active::after { right: 0; }
+.autumn-letter-verse.line-1 { left: 0; top: 0; }
+.autumn-letter-verse.line-2 { left: 5vw; top: 12vh; }
+.autumn-letter-verse.line-3 { right: 5vw; top: 23vh; }
+.autumn-letter-verse.line-4 { right: 0; top: 35vh; }
+.autumn-letter-distance { position: absolute; left: 50%; top: 34vh; width: 1px; height: 39vh; background: linear-gradient(to bottom, transparent, rgba(201,208,202,.32) 18%, rgba(201,208,202,.32) 82%, transparent); }
+.autumn-letter-distance i { position: absolute; left: -3px; width: 7px; height: 7px; border: 1px solid rgba(201,208,202,.44); border-radius: 50%; background: #07100f; }
+.autumn-letter-distance i:nth-child(1){top:3%}.autumn-letter-distance i:nth-child(2){top:31%}.autumn-letter-distance i:nth-child(3){top:64%}.autumn-letter-distance i:nth-child(4){top:94%}
+.autumn-letter-note { position: absolute; left: 8vw; bottom: 13vh; width: min(350px, 27vw); min-height: 118px; padding-top: 14px; border-top: 1px solid var(--line); font-family: "Noto Sans SC", sans-serif; color: #9ea9a3; }
+.autumn-letter-note > span { display: block; margin-bottom: 11px; color: #65736c; font-size: 10px; letter-spacing: .22em; }
+.autumn-letter-note strong { color: #c7d0ca; font-size: 13px; font-weight: 500; letter-spacing: .12em; }
+.autumn-letter-note p { margin: 7px 0 0; font-size: 12px; line-height: 1.9; letter-spacing: .035em; }
+.autumn-letter-detail { position: absolute; z-index: 5; right: 7vw; bottom: 14vh; width: min(390px, 30vw); padding: 18px 0 0 22px; border-left: 1px solid var(--line); background: linear-gradient(90deg, rgba(7,16,15,.18), rgba(7,16,15,.84)); }
+.autumn-letter-detail span { color: #aeb8b2; font-size: 12px; letter-spacing: .22em; }
+.autumn-letter-detail p { margin: 12px 0 0; font-family: "Noto Sans SC", sans-serif; font-size: 13px; line-height: 2.05; color: #c6cdc8; }
+.autumn-letter-tools { position: absolute; z-index: 6; right: 7vw; bottom: 5vh; display: flex; gap: 20px; font-family: "Noto Sans SC", sans-serif; }
+.autumn-letter-tools button { border: 0; border-bottom: 1px solid rgba(201,208,202,.25); background: transparent; padding: 7px 1px; cursor: pointer; color: #8f9a95; font-size: 12px; letter-spacing: .14em; }
+.autumn-letter-tools button:hover, .autumn-letter-tools button.is-active { color: #d8ddd8; border-color: #d8ddd8; }
+.autumn-letter-overlay { position: fixed; inset: 0; z-index: 30; display: grid; place-items: center; }
+.autumn-letter-backdrop { position: absolute; inset: 0; width: 100%; border: 0; background: rgba(2,8,7,.78); backdrop-filter: blur(10px); }
+.autumn-letter-sheet { position: relative; width: min(820px, calc(100vw - 42px)); max-height: calc(100dvh - 42px); overflow-y: auto; background: #d9ddd5; color: #202622; box-shadow: 0 34px 90px rgba(0,0,0,.44); }
+.autumn-letter-sheet > header { display: flex; justify-content: space-between; align-items: center; padding: 19px 26px; border-bottom: 1px solid rgba(32,38,34,.17); font-family: "Noto Sans SC", sans-serif; font-size: 12px; letter-spacing: .12em; }
+.autumn-letter-sheet > header button { border: 0; background: transparent; cursor: pointer; color: #4c5750; }
+.autumn-letter-history { display: grid; padding: 20px 34px 32px; }
+.autumn-letter-history button { display: flex; justify-content: space-between; gap: 20px; border: 0; border-bottom: 1px solid rgba(32,38,34,.13); background: transparent; padding: 16px 0; color: #343c37; text-align: left; cursor: pointer; }
+.autumn-letter-history button.is-current { color: #667b6c; }
+.autumn-letter-history small { font-family: "Noto Sans SC", sans-serif; color: #7b847e; }
+.autumn-letter-recite, .autumn-letter-dictation { padding: clamp(30px, 6vh, 58px) clamp(24px, 7vw, 76px); }
+.autumn-letter-recite { text-align: center; }
+.autumn-letter-recite > small { font-family: "Noto Sans SC", sans-serif; color: #707a73; }
+.autumn-letter-recite > button { display: block; width: 100%; min-height: 145px; margin: 20px 0; border: 0; background: transparent; color: #263029; font-size: clamp(34px, 6vw, 62px); letter-spacing: .13em; cursor: pointer; transition: filter .28s ease, opacity .28s ease; }
+.autumn-letter-recite > button.is-hidden { filter: blur(10px); opacity: .14; }
+.autumn-letter-recite p { font-family: "Noto Sans SC", sans-serif; color: #647068; font-size: 13px; line-height: 1.9; }
+.autumn-letter-recite footer { display: flex; justify-content: center; gap: 16px; margin-top: 28px; }
+.autumn-letter-recite footer button, .autumn-letter-check { border: 1px solid #4d5a52; background: transparent; padding: 11px 22px; cursor: pointer; color: #344038; }
+.autumn-letter-dictation h2 { margin: 0 0 30px; font-size: 34px; font-weight: 400; letter-spacing: .08em; }
+.autumn-letter-dictation label { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: center; margin: 17px 0; }
+.autumn-letter-dictation label > span { font-family: "Noto Sans SC", sans-serif; font-size: 11px; color: #7b847e; }
+.autumn-letter-dictation input { width: 100%; border: 0; border-bottom: 1px solid rgba(32,38,34,.3); border-radius: 0; background: transparent; padding: 9px 0 11px; color: #202622; font-size: 23px; letter-spacing: .1em; }
+.autumn-letter-dictation label small { grid-column: 2; color: #8d5149; }
+.autumn-letter-dictation > p { font-family: "Noto Sans SC", sans-serif; color: #5e6962; font-size: 13px; }
+.autumn-letter-check { display: block; margin: 28px 0 0 auto; background: #28322c; color: #edf0ec; }
+
+@media (max-width: 760px) {
+  .autumn-letter-page { min-height: 100svh; overflow-y: auto; }
+  .autumn-letter-texture { position: fixed; inset: 42% 0 0; width: 100%; height: 58%; opacity: .18; }
+  .autumn-letter-page::before { position: fixed; background: linear-gradient(180deg, #07100f 0 52%, rgba(7,16,15,.86) 76%, rgba(7,16,15,.66)); }
+  .autumn-letter-brand { top: 22px; left: 20px; right: 20px; }
+  .autumn-letter-heading { position: relative; top: auto; left: auto; padding: 88px 22px 0; }
+  .autumn-letter-heading h1 { font-size: 34px; }
+  .autumn-letter-stage { position: relative; inset: auto; min-height: 630px; padding: 58px 22px 150px; }
+  .autumn-letter-place { top: 22px; }
+  .autumn-letter-place--near { left: 22px; }
+  .autumn-letter-place--far { right: 22px; }
+  .autumn-letter-verses { position: relative; inset: auto; height: 350px; }
+  .autumn-letter-verse { grid-template-columns: 22px auto; }
+  .autumn-letter-verse span { font-size: clamp(25px, 7.5vw, 31px); }
+  .autumn-letter-verse.line-1 { left: 0; top: 0; }
+  .autumn-letter-verse.line-2 { left: 7vw; top: 84px; }
+  .autumn-letter-verse.line-3 { right: 6vw; top: 192px; }
+  .autumn-letter-verse.line-4 { right: 0; top: 278px; }
+  .autumn-letter-distance { left: 50%; top: 72px; height: 275px; }
+  .autumn-letter-note { position: relative; left: auto; bottom: auto; width: auto; min-height: 106px; margin-top: 22px; }
+  .autumn-letter-detail { position: fixed; z-index: 12; right: 14px; left: 14px; bottom: 82px; width: auto; max-height: 38svh; overflow-y: auto; padding: 18px; border: 1px solid rgba(201,208,202,.25); background: rgba(7,16,15,.96); }
+  .autumn-letter-tools { position: fixed; inset: auto 0 0; height: 68px; display: grid; grid-template-columns: repeat(5,1fr); gap: 0; padding: 0 10px; background: rgba(5,12,11,.96); border-top: 1px solid rgba(201,208,202,.16); }
+  .autumn-letter-tools button { border-bottom: 0; font-size: 11px; letter-spacing: .08em; }
+  .autumn-letter-sheet { width: calc(100vw - 18px); max-height: calc(100svh - 18px); }
+  .autumn-letter-history { padding: 14px 22px 26px; }
+  .autumn-letter-history button { display: grid; gap: 5px; }
+  .autumn-letter-recite, .autumn-letter-dictation { padding: 30px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .autumn-letter-page *, .autumn-letter-page *::before, .autumn-letter-page *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
