@@ -1,5 +1,18 @@
 export const poems = [
   {
+    id: "streamside-breeze", layout: "streamside-breeze", title: "溪居即事", author: "崔道融", dynasty: "唐", learnedAt: "2026.08.29", image: "/assets/poems/streamside-breeze.webp",
+    lines: ["篱外谁家不系船", "春风吹入钓鱼湾", "小童疑是有村客", "急向柴门去却关"],
+    notes: [
+      { term: "不系船", text: "“系”指拴系。篱笆外停着一只没有拴住的小船，开篇先写一个几乎无人注意的日常细节。" },
+      { term: "吹入钓鱼湾", text: "春风把未系的小船慢慢吹进溪湾。《全唐诗》卷七百十四作“吹入”；《万首唐人绝句》四库本作“催入”，本页采用前者通行文本。" },
+      { term: "疑是有村客", text: "小童看见船漂进来，以为是村中来了客人。“疑”在这里是推测、以为，并非真正看见了来客。" },
+      { term: "去却关", text: "“关”指门闩；“去却”是去掉、除去。小童急忙跑向柴门，准备除去门闩开门迎客。" },
+    ],
+    translation: "篱笆外不知是谁家的小船没有拴住，被春风悠悠吹进了钓鱼湾。小童看见船漂来，以为村里来了客人，急忙跑向柴门，去掉门闩准备开门迎接。",
+    appreciation: "前两句只写一条没有系住的小船：春风把它慢慢送进钓鱼湾，原本安静的溪居因此有了方向和速度。后两句忽然换到小童的视角，他把漂来的空船误认作客人将至，急忙奔向柴门开闩。“疑”“急”两个字把儿童的天真与好客写活，也让全诗从无人之景转成有人之情。小事极轻，却把水乡春日的松弛、明净和人情味同时留住。",
+    studyCopy: { dictationTitle: "让漂来的小船停在字里", dictationSuccess: "四句无误，船、风、小童与柴门都记住了。", recitationHint: "依次记住“不系船—春风—小童—柴门”四个节点，再复述原句。" },
+  },
+  {
     id: "autumn-letter", layout: "autumn-letter", title: "秋夜寄邱员外", author: "韦应物", dynasty: "唐", learnedAt: "2026.08.28", image: "/assets/poems/autumn-letter-texture.webp",
     lines: ["怀君属秋夜", "散步咏凉天", "空山松子落", "幽人应未眠"],
     notes: [
