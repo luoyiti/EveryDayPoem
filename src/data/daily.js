@@ -1,2 +1,2 @@
 // This file is updated by scripts/select-daily-poem.mjs.
-export const dailyPoemId = "qiupu-road";
+export const dailyPoemId = "ganlu-window";
