@@ -1,6 +1,11 @@
 {
   "learned": [
     {
+      "id": "mountain-rain-signal",
+      "date": "2026-09-01",
+      "status": "published"
+    },
+    {
       "id": "ganlu-window",
       "date": "2026-08-31",
       "status": "published"
