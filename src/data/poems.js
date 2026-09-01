@@ -2,6 +2,29 @@ import { poems as basePoems } from "./poems-base.js";
 
 export const poems = [
   {
+    id: "autumn-lane-light",
+    layout: "autumn-lane-light",
+    title: "秋日",
+    author: "耿湋",
+    dynasty: "唐",
+    learnedAt: "2026.09.02",
+    image: "/assets/poems/autumn-lane-light.webp",
+    lines: ["反照入闾巷", "忧来与谁语", "古道无人行", "秋风动禾黍"],
+    notes: [
+      { term: "反照 · 闾巷", text: "“反照”指夕阳返照、斜照；“闾巷”是里巷。开篇不写落日全景，只写余晖进入巷陌，把一天将尽的时间感压进狭长空间。" },
+      { term: "忧来 · 与谁语", text: "忧思来到心头，却找不到可以交谈的人。《全唐诗》卷二百六十九并记异文“愁来谁共语”，本页采用正文“忧来与谁语”。" },
+      { term: "古道 · 无人行", text: "“古道”是旧路；诗中写道路空无行人。《全唐诗》此句“无”下注一作“少”，本页采用正文“无人行”。" },
+      { term: "禾黍", text: "泛指田间谷物。前三句几乎没有人的活动，末句只让秋风吹动禾黍，以田野的细微运动收束全诗。" },
+    ],
+    translation: "夕阳的余晖斜斜照进里巷，忧思涌来，却不知道能同谁说。古老的道路上看不到行人，只有秋风吹过田野，轻轻摇动着禾黍。",
+    appreciation: "首句只让斜阳进入闾巷，光在，人物却缺席；第二句直写忧来无人与语。后两句把视线推出村巷，古道仍旧空寂，只有秋风掠过禾黍，使静止的黄昏忽然有了细微动势。诗不铺陈身世，也不解释忧从何起，而以夕照、空路和摇动的庄稼收束情绪：越是日常的乡村景物，越显得那份无可交谈的孤清。",
+    studyCopy: {
+      dictationTitle: "沿着夕照走到禾黍",
+      dictationSuccess: "四句无误，夕照、忧思、古道与秋风已经连成一路。",
+      recitationHint: "先记住“反照入巷—无人可语—古道无人—秋风禾黍”四个节点，再复述原句。",
+    },
+  },
+  {
     id: "mountain-rain-signal",
     layout: "mountain-rain-signal",
     title: "山雨",
@@ -18,11 +41,7 @@ export const poems = [
     ],
     translation: "整整一夜，林间都被明亮的星光和月光照着，既没有云气，也听不到雷声。天刚亮时，却忽然发现溪水流得很急；这才知道，是别处的山上下了雨，雨水沿山溪奔流到了这里。",
     appreciation: "前两句故意把“雨”写空：整夜星月照林，既无云气也无雷声，读者和诗人一样相信此山无雨。转折落在“平明忽见”，清晨溪流骤急，才从结果反推出远山夜雨。全诗不正面描摹雨势，而让水流替看不见的天气作证；由静夜到急溪、由眼前到他山，二十八字完成一次轻巧的因果翻转，也显出山居观察的敏锐与趣味。",
-    studyCopy: {
-      dictationTitle: "从晴夜写到远山之雨",
-      dictationSuccess: "四句无误，星月、无雷、急溪与他山已经连成因果。",
-      recitationHint: "先抓住“星月白—无云雷—忽见溪急—他山雨来”四个节点，再复述原句。",
-    },
+    studyCopy: { dictationTitle: "从晴夜写到远山之雨", dictationSuccess: "四句无误，星月、无雷、急溪与他山已经连成因果。", recitationHint: "先抓住“星月白—无云雷—忽见溪急—他山雨来”四个节点，再复述原句。" },
   },
   {
     id: "ganlu-window",
@@ -41,11 +60,7 @@ export const poems = [
     ],
     translation: "躺在枕上，只觉云气缭绕，千峰仿佛逼近眼前；床下传来的松涛，像万道山谷一齐轰鸣。想看看那如银山般拍向天空的巨浪，我推开窗，浩荡大江仿佛一下涌入房中。",
     appreciation: "前两句把寺舍写得近乎贴着山河：枕边云气仿佛把千峰推到眼前，床下轰鸣又像万壑松涛。第三句“要看”忽然把听觉转成行动，末句“开窗”更是全诗的结构转轴。窗一开，原先隔在室外的长江巨浪仿佛直接涌入房中。诗不细描人物情绪，而用近与远、室内与江天的骤然转换，写出登临所见的雄阔气势。",
-    studyCopy: {
-      dictationTitle: "把大江从窗外写进来",
-      dictationSuccess: "四句无误，云气、松声、银浪与开窗已经连成一幅江山。",
-      recitationHint: "依次记住“枕—床—看浪—开窗”四个动作和空间节点，再复述原句。",
-    },
+    studyCopy: { dictationTitle: "把大江从窗外写进来", dictationSuccess: "四句无误，云气、松声、银浪与开窗已经连成一幅江山。", recitationHint: "依次记住“枕—床—看浪—开窗”四个动作和空间节点，再复述原句。" },
   },
   {
     id:"qiupu-road", layout:"qiupu-road", title:"秋浦途中", author:"杜牧", dynasty:"唐", learnedAt:"2026.08.30", image:"/assets/poems/qiupu-rain-texture.webp",

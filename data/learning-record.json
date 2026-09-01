@@ -1,6 +1,11 @@
 {
   "learned": [
     {
+      "id": "autumn-lane-light",
+      "date": "2026-09-02",
+      "status": "published"
+    },
+    {
       "id": "mountain-rain-signal",
       "date": "2026-09-01",
       "status": "published"
