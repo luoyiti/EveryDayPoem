@@ -2,6 +2,29 @@ import { poems as basePoems } from "./poems-base.js";
 
 export const poems = [
   {
+    id: "luanjia-rapids",
+    layout: "luanjia-rapids",
+    title: "栾家濑",
+    author: "王维",
+    dynasty: "唐",
+    learnedAt: "2026.09.03",
+    image: "/assets/poems/luanjia-rapids.webp",
+    lines: ["飒飒秋雨中", "浅浅石溜泻", "跳波自相溅", "白鹭惊复下"],
+    notes: [
+      { term: "飒飒 · 秋雨", text: "“飒飒”写风雨之声，先从听觉把读者带进秋雨中的石濑。题名“濑”指水流湍急的浅滩或石滩。" },
+      { term: "浅浅 · 石溜", text: "“浅浅”在此常读 jiānjiān，形容水流声；“石溜”指从石面急急流泻的水。雨声与水声在这一句叠在一起。" },
+      { term: "跳波 · 自相溅", text: "“跳波”写急流撞石后跃起、相互飞溅的水花。维基文库所据《全唐诗》系统作“跳波”；识典所收《类笺唐王右丞诗集》页面见“波跳”字序，本页采用前者通行正文。" },
+      { term: "白鹭 · 惊复下", text: "白鹭被突然迸起的水花惊动而飞起，片刻后又落下来。“复下”让全诗从瞬间的惊动重新回到安静。" },
+    ],
+    translation: "秋雨飒飒落下，石滩上的急流发出潺潺声，从石面泻过。跳动的浪花彼此飞溅，一只白鹭受惊飞起，随后又重新落回水边。",
+    appreciation: "前两句先把秋雨写成声音：飒飒雨声落在石濑，水从石面急泻；第三句“跳波”让细碎水花忽然跃起，画面从连续流动转为瞬间迸溅。真正的收束在末句：白鹭受惊飞起，却又重新落下。一次短促的惊动没有破坏山水的安静，反而让静更可感。王维只取雨、水、石与白鹭四个近景动作，便写出清冷而有生命的辋川秋意。",
+    studyCopy: {
+      dictationTitle: "把白鹭的一惊一落写回来",
+      dictationSuccess: "四句无误，雨声、石溜、跳波与白鹭已经连成一瞬。",
+      recitationHint: "依次记住“秋雨—石溜—跳波—白鹭复下”四个节点，再复述原句。",
+    },
+  },
+  {
     id: "autumn-lane-light",
     layout: "autumn-lane-light",
     title: "秋日",

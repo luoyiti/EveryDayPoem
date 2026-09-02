@@ -1,2 +1,2 @@
 // This file is updated by scripts/select-daily-poem.mjs.
-export const dailyPoemId = "autumn-lane-light";
+export const dailyPoemId = "luanjia-rapids";
