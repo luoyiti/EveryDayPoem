@@ -1,5 +1,6 @@
 {
   "learned": [
+    { "id": "hengtang-rain", "date": "2026-09-06", "status": "published", "genre": "词" },
     { "id": "tianjingsha-autumn", "date": "2026-09-05", "status": "published", "genre": "曲" },
     { "id": "autumn-brothers-stars", "date": "2026-09-05", "status": "published", "genre": "诗" },
     { "id": "xinliang-fields", "date": "2026-09-04", "status": "published", "genre": "诗" },
