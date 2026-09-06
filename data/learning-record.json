@@ -1,5 +1,6 @@
 {
   "learned": [
+    { "id": "songfeng-rest", "date": "2026-09-07", "status": "published", "genre": "文" },
     { "id": "xiamouse-night", "date": "2026-09-07", "status": "published", "genre": "赋" },
     { "id": "hengtang-rain", "date": "2026-09-06", "status": "published", "genre": "词" },
     { "id": "tianjingsha-autumn", "date": "2026-09-05", "status": "published", "genre": "曲" },
