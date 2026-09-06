@@ -14,6 +14,7 @@ import { XinliangFieldsPage } from "./XinliangFieldsPage.jsx";
 import { AutumnBrothersPage } from "./AutumnBrothersPage.jsx";
 import { TianjingshaAutumnPage } from "./TianjingshaAutumnPage.jsx";
 import { HengtangRainPage } from "./HengtangRainPage.jsx";
+import { XiamouseNightPage } from "./XiamouseNightPage.jsx";
 import { poemsById } from "./data/poems.js";
 import { dailyPoemId } from "./data/daily.js";
 
@@ -32,6 +33,7 @@ export function App() {
   const poem = useMemo(() => poemsById[routeId] || poemsById[dailyPoemId], [routeId]);
   const navigate = (id) => { window.location.hash = id; };
 
+  if (poem.layout === "xiamouse-night") return <XiamouseNightPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "hengtang-rain") return <HengtangRainPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "tianjingsha-autumn") return <TianjingshaAutumnPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "autumn-brothers-stars") return <AutumnBrothersPage poem={poem} onNavigate={navigate} />;

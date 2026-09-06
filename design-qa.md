@@ -1,34 +1,36 @@
-# Design QA — 每日古诗文 / 青玉案·凌波不过横塘路
+# Design QA — 每日古诗文 / 黠鼠赋
 
 ## Visual brief
 
-- 时间：暮春傍晚；地点按词中“横塘、蘅皋”组织为泛化江南水岸，不虚构具体宅院位置。
-- 天气与色温：暮色冷灰绿；结尾以烟草、风絮、梅雨三层密度表现“闲情”逐步扩张，不把作品误画成暴雨场景。
-- 材质与核心意象：水岸、远屋、低云、湿草、风絮、细雨；建筑仅作“不可抵达”的远景，不呈现具体人物故事。
-- 视觉命题：“目光沿横塘追到看不见的朱戻，暮色转入题句，最后让愁从一川、满城扩散到一季梅雨。”
-- 转折：第七句“飞云冉冉蘅皋暮”由想象居处转回眼前暮色；第九句设问以后，页面从折线路径切成三条横向尺度，回应结尾博喻。
+- 时间：夜坐至假寝醒转；地点只抽象为木质书斋，不虚构具体宅第、年份或地点。
+- 天气与色温：室外冷蓝夜色，室内仅保留一处低照度烛光；冷暖交界服务于“外部小事 → 内在自省”的结构转折。
+- 材质与核心意象：木床、粗麻橐、散落谷粒、烛台、书册；鼠不作为夸张主体，只用逃逸后的细小痕迹留下动作结果。
+- 视觉命题：“先让读者沿袋中声响追到一次装死脱逃，再在鼠已离场后转入更安静、更窄的自省文字。”
+- 转折：第五段以“乌在其为智也”把趣事推成反问；第六段“坐而假寝”以后，阅读轨道由逐步错位的叙事段落切换为向内收束的四段自问。
 
 ## Text and source check
 
-- 龙榆生《唐宋名家词选》贺铸《横塘路（青玉案）》录“凌波不过横塘路……若问闲情都几许？一川烟草，满城风絮，梅子黄时雨”，本页以该版本为正文。
-- 维基文库《青玉案（贺铸）》所据《白香词谱笺》保存“月台花谢 / 碧云 / 试问闲愁”等异文，证明该词存在版本差异；正文不混拼，注释仅提示必要异文。
-- 候选 `青玉案·凌波不过横塘路 / 贺铸 / 凌波不过横塘路`（词）、`书上元夜游 / 苏轼 / 己卯上元`（文）、`临江仙·梦后楼台高锁 / 晏几道 / 梦后楼台高锁`（词）均执行排除检查，退出码 0；并经当前 HEAD 代码搜索、学习记录复核无重复。
-- 最近 7 次记录此前仅覆盖“曲、诗”两类；本轮选择“词”后，最近 7 次可覆盖诗、曲、词三类，符合体裁轮换目标。最近 14 次仍缺“文/赋”中的一类，后续应继续优先补足。
+- 维基文库《黠鼠赋》收于《东坡全集》，正文作“苏子夜坐，有鼠方啮……余俯而笑，仰而觉。使童子执笔，记余之作”，本页以这一系统为正文。
+- 识典古籍《苏文忠公集·黠鼠赋》与正文主体一致，但见“假寐 / 予 / 怍”等字词差异；本页不混拼，只在相关注释简短提示“壁/璧”与末字异文。
+- 候选 `黠鼠赋 / 苏轼 / 苏子夜坐`（赋）、`小石城山记 / 柳宗元 / 自西山道口径北`（文）、`临江之麋 / 柳宗元 / 临江之人畋得麋麑`（文）均运行 `npm run check:exclusion`，退出码 0；同时在任务基线 HEAD 的 GitHub 代码搜索中，候选题名与首句均无命中，现有诗库及排除文件无重复。
+- 最近记录为：词、曲、诗、诗、诗、诗、诗……最近 7 次已覆盖诗/曲/词三类，但最近 14 次“曲/文/赋”仅有曲；本轮选择“赋”后补足赋体，使轮换更接近协议目标。
 
 ## Asset and implementation
 
-- ImageGen 本轮仍错误生成带文字的通用页面稿，未直接使用。仅从生成图的无文字水岸区域裁取像素，去除导航、诗文与卡片区域后进行降饱和、柔化和暗部处理，得到 `public/assets/poems/hengtang-rain.webp`；页面不把其中建筑或舟只解释为作品史实。
-- `src/HengtangRainPage.jsx`：独立“目送折线 → 暮色回折 → 三层闲情”阅读结构；逐句注释、译文、赏析、背诵、默写和历史入口完整，Escape 可关闭覆盖层。
-- `src/hengtang-rain.css`：桌面以三段非对秳路径和三重横向博喻构图，移动端恢复单列阅读；包含键盘焦点与 `prefers-reduced-motion`。
-- `src/App.jsx`：新增 `poem.layout === "hengtang-rain"` 独立分发；未修改通用发布测试。
-- `data/learning-record.json`：2026-09-06 新记录保存 `genre: "词"`。
+- `public/assets/poems/xiamouse-study.webp`：ImageGen 本轮生成夜间书斋、麻袋与烛光的无文字场景；裁切为 16:9 后压缩为 1280×720 WebP。左侧低细节冷暗区承载标题与阅读，右侧烛光和麻袋只表达“声止、倒袋、鼠逸”的环境，不添加故事外人物。
+- `src/XiamouseNightPage.jsx`：独立“夜间叙事五段 → 鼠已逸 → 假寝自省四段”阅读结构；注释、译文、赏析、背诵、默写和历史入口完整，Escape 可关闭覆盖层。
+- `src/xiamouse-night.css`：桌面三列“题签 / 双阶段阅读轨 / 注释”结构；移动端前半保留场景、后半转为纵向文段；包含键盘焦点与 `prefers-reduced-motion`。
+- `src/App.jsx`：新增 `poem.layout === "xiamouse-night"` 独立分发；未修改通用发布测试。
+- `data/learning-record.json`：2026-09-07 新记录保存 `genre: "赋"`。
 
 ## Verification
 
-- 任务开始精确 HEAD 的 GitHub Actions 已完成 `Validate poetry content` 且成功，证明基线精确仓库树的网络无关内容契约与 production build 均通过。
-- 本轮 `npm run bootstrap`：退出码 20，输出 `DEPENDENCY_NETWORK_UNAVAILABLE`；按仓库协议继续。
-- 本地候选排除检查均执行并退出 0；本地 build、`npm run test:sites` 与浏览器运行时检查因 bootstrap=20 未执行。
-- 提交前对新数据契约、资源路径、布局分发、CSS/JS 源码进行检查；提交后以 GitHub Actions 与 Vercel 精确提交树的 `npm run verify:offline`、production build、Sites tests 和生产 URL 为最终 gate。
+- 任务基线 SHA `aa4e89aeed33e94d60374db356a107bb4ff74d6b` 的 GitHub Actions `Validate poetry content` 已完成且成功，证明精确基线仓库树可通过远端内容与 production build gate。
+- fresh reconstruction 的 `npm run verify:offline`：通过；课程排除契约 60 + 72 = 132，5 项 matcher 通过，daily tests 2/2。
+- `npm run bootstrap`：退出码 20，输出 `DEPENDENCY_NETWORK_UNAVAILABLE`；按仓库协议继续。
+- 本地 `npm run build`：未执行，原因是 bootstrap=20 且依赖不可用。
+- 本地 `npm run test:sites`：未执行，同上。
+- 桌面/手机运行时浏览器检查：未执行，同上；已完成数据契约、资源路径、布局分发、CSS/JS 源码与移动端规则检查，提交后以 GitHub Actions 与 Vercel 精确提交树为最终 gate。
 - 未提交 `dist/`、`.vercel/`、`node_modules/`、`.firecrawl/` 或 QA 截图。
 
 final result: source review passed; remote build gate pending
