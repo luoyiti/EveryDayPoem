@@ -1,5 +1,6 @@
 {
   "learned": [
+    { "id": "wusong-clouds", "date": "2026-09-09", "status": "published", "genre": "词" },
     { "id": "wangbo-mountain", "date": "2026-09-08", "status": "published", "genre": "诗" },
     { "id": "songfeng-rest", "date": "2026-09-07", "status": "published", "genre": "文" },
     { "id": "xiamouse-night", "date": "2026-09-07", "status": "published", "genre": "赋" },

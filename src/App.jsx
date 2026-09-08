@@ -17,6 +17,7 @@ import { HengtangRainPage } from "./HengtangRainPage.jsx";
 import { XiamouseNightPage } from "./XiamouseNightPage.jsx";
 import { SongfengRestPage } from "./SongfengRestPage.jsx";
 import { WangboMountainPage } from "./WangboMountainPage.jsx";
+import { WusongCloudsPage } from "./WusongCloudsPage.jsx";
 import { poemsById } from "./data/poems.js";
 import { dailyPoemId } from "./data/daily.js";
 
@@ -35,6 +36,7 @@ export function App() {
   const poem = useMemo(() => poemsById[routeId] || poemsById[dailyPoemId], [routeId]);
   const navigate = (id) => { window.location.hash = id; };
 
+  if (poem.layout === "wusong-clouds") return <WusongCloudsPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "wangbo-mountain") return <WangboMountainPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "songfeng-rest") return <SongfengRestPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "xiamouse-night") return <XiamouseNightPage poem={poem} onNavigate={navigate} />;
