@@ -19,6 +19,7 @@ import { SongfengRestPage } from "./SongfengRestPage.jsx";
 import { WangboMountainPage } from "./WangboMountainPage.jsx";
 import { WusongCloudsPage } from "./WusongCloudsPage.jsx";
 import { JiuriHorizonPage } from "./JiuriHorizonPage.jsx";
+import { GuitianFieldPage } from "./GuitianFieldPage.jsx";
 import { poemsById } from "./data/poems.js";
 import { dailyPoemId } from "./data/daily.js";
 
@@ -29,6 +30,7 @@ export function App() {
   useEffect(() => { const onHashChange = () => setRouteId(resolvePoemId()); window.addEventListener("hashchange", onHashChange); return () => window.removeEventListener("hashchange", onHashChange); }, []);
   const poem = useMemo(() => poemsById[routeId] || poemsById[dailyPoemId], [routeId]);
   const navigate = (id) => { window.location.hash = id; };
+  if (poem.layout === "guitian-field") return <GuitianFieldPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "jiuri-horizon") return <JiuriHorizonPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "wusong-clouds") return <WusongCloudsPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "wangbo-mountain") return <WangboMountainPage poem={poem} onNavigate={navigate} />;

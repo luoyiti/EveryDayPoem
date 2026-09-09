@@ -1,29 +1,160 @@
 {
   "learned": [
-    { "id": "zhegui-jiuri", "date": "2026-09-09", "status": "published", "genre": "曲" },
-    { "id": "wusong-clouds", "date": "2026-09-09", "status": "published", "genre": "词" },
-    { "id": "wangbo-mountain", "date": "2026-09-08", "status": "published", "genre": "诗" },
-    { "id": "songfeng-rest", "date": "2026-09-07", "status": "published", "genre": "文" },
-    { "id": "xiamouse-night", "date": "2026-09-07", "status": "published", "genre": "赋" },
-    { "id": "hengtang-rain", "date": "2026-09-06", "status": "published", "genre": "词" },
-    { "id": "tianjingsha-autumn", "date": "2026-09-05", "status": "published", "genre": "曲" },
-    { "id": "autumn-brothers-stars", "date": "2026-09-05", "status": "published", "genre": "诗" },
-    { "id": "xinliang-fields", "date": "2026-09-04", "status": "published", "genre": "诗" },
-    { "id": "luanjia-rapids", "date": "2026-09-03", "status": "published", "genre": "诗" },
-    { "id": "autumn-lane-light", "date": "2026-09-02", "status": "published", "genre": "诗" },
-    { "id": "mountain-rain-signal", "date": "2026-09-01", "status": "published", "genre": "诗" },
-    { "id": "ganlu-window", "date": "2026-08-31", "status": "published", "genre": "诗" },
-    { "id": "qiupu-road", "date": "2026-08-30", "status": "published", "genre": "诗" },
-    { "id": "streamside-breeze", "date": "2026-08-29", "status": "published", "genre": "诗" },
-    { "id": "autumn-letter", "date": "2026-08-28", "status": "published", "genre": "诗" },
-    { "id": "village-night", "date": "2026-08-27", "status": "published", "genre": "诗" },
-    { "id": "watershed-parting", "date": "2026-08-26", "status": "published", "genre": "诗" },
-    { "id": "taicheng-rain", "date": "2026-08-25", "status": "published", "genre": "诗" },
-    { "id": "jinling-ferry", "date": "2026-08-24", "status": "published", "genre": "诗" },
-    { "id": "lanxi-moon", "date": "2026-08-23", "status": "published", "genre": "诗" },
-    { "id": "xianyang-rain", "date": "2026-08-23", "status": "published", "genre": "诗" },
-    { "id": "maple-night", "date": "2026-08-23", "status": "published", "genre": "诗" },
-    { "id": "snow-river", "date": "2026-08-18", "status": "published", "genre": "诗" },
-    { "id": "spring-dawn", "date": "2026-08-12", "status": "published", "genre": "诗" }
+    {
+      "id": "guitian-spring-field",
+      "date": "2026-09-10",
+      "status": "published",
+      "genre": "赋"
+    },
+    {
+      "id": "zhegui-jiuri",
+      "date": "2026-09-09",
+      "status": "published",
+      "genre": "曲"
+    },
+    {
+      "id": "wusong-clouds",
+      "date": "2026-09-09",
+      "status": "published",
+      "genre": "词"
+    },
+    {
+      "id": "wangbo-mountain",
+      "date": "2026-09-08",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "songfeng-rest",
+      "date": "2026-09-07",
+      "status": "published",
+      "genre": "文"
+    },
+    {
+      "id": "xiamouse-night",
+      "date": "2026-09-07",
+      "status": "published",
+      "genre": "赋"
+    },
+    {
+      "id": "hengtang-rain",
+      "date": "2026-09-06",
+      "status": "published",
+      "genre": "词"
+    },
+    {
+      "id": "tianjingsha-autumn",
+      "date": "2026-09-05",
+      "status": "published",
+      "genre": "曲"
+    },
+    {
+      "id": "autumn-brothers-stars",
+      "date": "2026-09-05",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "xinliang-fields",
+      "date": "2026-09-04",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "luanjia-rapids",
+      "date": "2026-09-03",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "autumn-lane-light",
+      "date": "2026-09-02",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "mountain-rain-signal",
+      "date": "2026-09-01",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "ganlu-window",
+      "date": "2026-08-31",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "qiupu-road",
+      "date": "2026-08-30",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "streamside-breeze",
+      "date": "2026-08-29",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "autumn-letter",
+      "date": "2026-08-28",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "village-night",
+      "date": "2026-08-27",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "watershed-parting",
+      "date": "2026-08-26",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "taicheng-rain",
+      "date": "2026-08-25",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "jinling-ferry",
+      "date": "2026-08-24",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "lanxi-moon",
+      "date": "2026-08-23",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "xianyang-rain",
+      "date": "2026-08-23",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "maple-night",
+      "date": "2026-08-23",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "snow-river",
+      "date": "2026-08-18",
+      "status": "published",
+      "genre": "诗"
+    },
+    {
+      "id": "spring-dawn",
+      "date": "2026-08-12",
+      "status": "published",
+      "genre": "诗"
+    }
   ]
 }
