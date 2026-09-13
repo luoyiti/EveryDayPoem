@@ -1,5 +1,6 @@
 {
   "learned": [
+    { "id": "renyueyuan-mountain", "date": "2026-09-14", "status": "published", "genre": "曲" },
     { "id": "youxi-clearing", "date": "2026-09-13", "status": "published", "genre": "文" },
     { "id": "danyang-lake-breeze", "date": "2026-09-12", "status": "published", "genre": "词" },
     { "id": "autumn-night-alone", "date": "2026-09-11", "status": "published", "genre": "诗" },
