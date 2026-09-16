@@ -26,6 +26,7 @@ import { YouxiStreamPage } from "./YouxiStreamPage.jsx";
 import { MountainTeaPage } from "./MountainTeaPage.jsx";
 import { EarlyAutumnPage } from "./EarlyAutumnPage.jsx";
 import { HepuStarrySeaPage } from "./HepuStarrySeaPage.jsx";
+import { DianjiangchunGazePage } from "./DianjiangchunGazePage.jsx";
 import { poemsById } from "./data/poems.js";
 import { dailyPoemId } from "./data/daily.js";
 
@@ -36,6 +37,7 @@ export function App() {
   useEffect(() => { const onHashChange = () => setRouteId(resolvePoemId()); window.addEventListener("hashchange", onHashChange); return () => window.removeEventListener("hashchange", onHashChange); }, []);
   const poem = useMemo(() => poemsById[routeId] || poemsById[dailyPoemId], [routeId]);
   const navigate = (id) => { window.location.hash = id; };
+  if (poem.layout === "dianjiangchun-rain-gaze") return <DianjiangchunGazePage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "hepu-starry-sea") return <HepuStarrySeaPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "early-autumn-threshold") return <EarlyAutumnPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "mountain-tea-ledger") return <MountainTeaPage poem={poem} onNavigate={navigate} />;
