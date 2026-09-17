@@ -1,5 +1,6 @@
 {
   "learned": [
+    { "id": "xuci-xuyi-twilight", "date": "2026-09-18", "status": "published", "genre": "诗" },
     { "id": "qiufu-clear-autumn", "date": "2026-09-18", "status": "published", "genre": "赋" },
     { "id": "dianjiangchun-rain-gaze", "date": "2026-09-17", "status": "published", "genre": "词" },
     { "id": "hepu-starry-sea", "date": "2026-09-16", "status": "published", "genre": "文" },
