@@ -1,0 +1,132 @@
+@import "@fontsource/noto-serif-sc/500.css";
+@import "@fontsource/noto-serif-sc/700.css";
+@import "@fontsource/noto-sans-sc/400.css";
+@import "@fontsource/noto-sans-sc/500.css";
+
+.cz-page {
+  min-height: 100dvh;
+  position: relative;
+  overflow-x: hidden;
+  color: #edf1ef;
+  background: #10171b;
+  font-family: "Noto Sans SC", sans-serif;
+  --ink: #edf1ef;
+  --muted: rgba(237, 241, 239, .62);
+  --line: rgba(237, 241, 239, .2);
+  --warm: #c6a67e;
+}
+.cz-page * { box-sizing: border-box; }
+.cz-bg { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 52% center; filter: saturate(.72) brightness(.62); z-index: 0; }
+.cz-fog { position: fixed; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(9,15,18,.9) 0%, rgba(13,22,26,.72) 34%, rgba(14,21,24,.35) 67%, rgba(6,11,14,.54) 100%), linear-gradient(180deg, rgba(7,13,16,.28), rgba(7,13,16,.7)); pointer-events: none; }
+.cz-river { position: fixed; left: 39%; top: 8%; width: 1px; height: 84%; background: linear-gradient(180deg, transparent, rgba(216,226,224,.25) 20%, rgba(216,226,224,.48) 65%, transparent); transform: rotate(12deg); transform-origin: top; z-index: 1; pointer-events: none; }
+button, a { font: inherit; }
+button { color: inherit; }
+.cz-header { position: relative; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 1.4rem 3.2vw; border-bottom: 1px solid rgba(255,255,255,.08); }
+.cz-brand { color: inherit; text-decoration: none; display: flex; align-items: baseline; gap: 1rem; }
+.cz-brand strong { font-family: "Noto Serif SC", serif; letter-spacing: .08em; font-size: 1rem; }
+.cz-brand span, .cz-header > div > span { color: var(--muted); font-size: .74rem; letter-spacing: .08em; }
+.cz-header > div { display: flex; align-items: center; gap: 1rem; }
+.cz-header button, .cz-tools button, .cz-note button, .cz-study button, .cz-history button, .cz-detail button { border: 0; background: transparent; cursor: pointer; }
+.cz-header button { display: inline-flex; gap: .38rem; align-items: center; border-left: 1px solid var(--line); padding-left: 1rem; }
+
+.cz-stage { position: relative; z-index: 3; min-height: calc(100dvh - 76px); display: grid; grid-template-columns: minmax(170px, .7fr) minmax(440px, 1.7fr) minmax(250px, .8fr); gap: 3vw; align-items: center; padding: 4.4rem 4vw 7.2rem; }
+.cz-title-block { align-self: start; padding-top: 4vh; }
+.cz-title-block small { color: var(--warm); font-size: .72rem; letter-spacing: .18em; }
+.cz-title-block h1 { font-family: "Noto Serif SC", serif; font-size: clamp(2.2rem, 4vw, 4.8rem); font-weight: 500; line-height: 1.16; margin: .7rem 0 .5rem; letter-spacing: .03em; max-width: 5.4em; text-wrap: balance; }
+.cz-title-block p { margin: 0; color: var(--muted); letter-spacing: .24em; }
+.cz-visibility { margin-top: 3.6rem; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .6rem; color: rgba(237,241,239,.42); font-size: .67rem; letter-spacing: .12em; }
+.cz-visibility i { height: 1px; background: linear-gradient(90deg, rgba(237,241,239,.38), rgba(237,241,239,.04)); }
+
+.cz-route { position: relative; min-height: 610px; display: flex; flex-direction: column; justify-content: center; gap: .45rem; padding: 1rem 0; }
+.cz-route-line { position: absolute; left: 28px; top: 10%; bottom: 10%; width: 1px; background: linear-gradient(180deg, rgba(237,241,239,.04), rgba(237,241,239,.42), rgba(198,166,126,.4)); }
+.cz-line { position: relative; display: flex; width: min(92%, 680px); align-items: center; gap: 1.2rem; padding: .9rem .8rem; border: 0; background: transparent; text-align: left; cursor: pointer; opacity: .48; transition: opacity .25s ease, transform .25s ease; }
+.cz-line:nth-of-type(3n+1) { transform: translateX(4%); }
+.cz-line:nth-of-type(3n+2) { transform: translateX(11%); }
+.cz-line:nth-of-type(3n) { transform: translateX(18%); }
+.cz-line:hover, .cz-line.is-active { opacity: 1; }
+.cz-line.is-active { transform: translateX(2%); }
+.cz-marker { flex: 0 0 56px; width: 56px; height: 56px; border: 1px solid rgba(237,241,239,.3); border-radius: 50%; display: grid; place-items: center; font-family: "Noto Serif SC", serif; font-size: 1.15rem; background: rgba(14,23,26,.42); backdrop-filter: blur(8px); }
+.cz-line.is-active .cz-marker { border-color: rgba(198,166,126,.85); color: #f1d7b5; background: rgba(112,84,54,.25); }
+.cz-line-copy { display: grid; gap: .24rem; }
+.cz-line-copy small { color: rgba(237,241,239,.5); font-size: .68rem; letter-spacing: .12em; }
+.cz-line-copy strong { font-family: "Noto Serif SC", serif; font-weight: 500; line-height: 1.65; font-size: clamp(1rem, 1.42vw, 1.38rem); }
+
+.cz-note { align-self: end; margin-bottom: 7vh; max-width: 360px; border-top: 1px solid rgba(237,241,239,.32); padding-top: 1rem; }
+.cz-note-index { display: flex; justify-content: space-between; align-items: baseline; color: var(--muted); font-size: .7rem; letter-spacing: .12em; }
+.cz-note-index b { color: rgba(237,241,239,.26); font-family: "Noto Serif SC", serif; font-size: 2.2rem; font-weight: 500; }
+.cz-note h2 { font-family: "Noto Serif SC", serif; font-weight: 500; font-size: 1.12rem; margin: .6rem 0 .7rem; }
+.cz-note p { color: rgba(237,241,239,.72); line-height: 1.9; font-size: .88rem; margin: 0; }
+.cz-note > button { margin-top: 1.2rem; padding: 0; color: #d8c5a9; font-size: .78rem; }
+.cz-note > button:disabled { opacity: .38; cursor: default; }
+
+.cz-tools { position: fixed; z-index: 7; bottom: 1.2rem; left: 50%; transform: translateX(-50%); display: flex; gap: .2rem; padding: .36rem; border: 1px solid rgba(255,255,255,.16); background: rgba(11,17,20,.68); backdrop-filter: blur(18px); border-radius: 999px; box-shadow: 0 12px 40px rgba(0,0,0,.2); }
+.cz-tools button { min-width: 74px; padding: .62rem .92rem; border-radius: 999px; font-size: .78rem; display: inline-flex; justify-content: center; align-items: center; gap: .35rem; }
+.cz-tools button:hover { background: rgba(255,255,255,.08); }
+
+.cz-scrim { position: absolute; inset: 0; width: 100%; height: 100%; background: rgba(3,8,10,.62) !important; }
+.cz-detail, .cz-study { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 1.2rem; }
+.cz-detail > section { position: relative; width: min(650px, 92vw); background: rgba(17,25,28,.94); border: 1px solid rgba(255,255,255,.15); padding: 1.5rem 1.7rem 1.8rem; backdrop-filter: blur(18px); }
+.cz-detail header, .cz-study-sheet > header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: .8rem; }
+.cz-detail header span { color: #d8c5a9; letter-spacing: .16em; font-size: .78rem; }
+.cz-detail p { font-family: "Noto Serif SC", serif; font-size: 1rem; line-height: 2; color: rgba(237,241,239,.85); margin: 1rem 0 0; }
+
+.cz-study-sheet { position: relative; width: min(760px, 94vw); max-height: 88dvh; overflow: auto; background: #11191c; border: 1px solid rgba(255,255,255,.16); padding: 1.4rem 1.5rem 1.8rem; }
+.cz-study-sheet > header button { display: inline-flex; align-items: center; gap: .35rem; color: var(--muted); padding: .25rem 0; }
+.cz-study-sheet > header span { color: #d8c5a9; letter-spacing: .18em; font-size: .76rem; }
+.cz-recite { min-height: 380px; display: grid; align-content: center; justify-items: start; gap: 1.1rem; padding: 2rem 4vw; }
+.cz-recite > small { color: var(--muted); letter-spacing: .14em; }
+.cz-recite > button { width: 100%; min-height: 120px; display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: left; }
+.cz-recite > button span { font-family: "Noto Serif SC", serif; font-size: clamp(1.2rem, 2.5vw, 2.2rem); line-height: 1.7; transition: filter .2s ease, opacity .2s ease; }
+.cz-recite > button.is-veiled span { filter: blur(10px); opacity: .16; user-select: none; }
+.cz-recite p { color: var(--muted); line-height: 1.85; }
+.cz-recite > div { display: flex; gap: .7rem; }
+.cz-recite > div button, .cz-submit { border: 1px solid var(--line); padding: .7rem 1rem; }
+.cz-recite > div button:last-child, .cz-submit { background: #d3c0a3; color: #11191c; border-color: transparent; }
+.cz-dictation { padding: 1.3rem .2rem .2rem; }
+.cz-dictation h2 { font-family: "Noto Serif SC", serif; font-weight: 500; margin: .4rem 0 1.2rem; }
+.cz-dictation label { display: grid; grid-template-columns: 95px 1fr 22px; align-items: start; gap: .8rem; padding: .72rem 0; border-top: 1px solid rgba(255,255,255,.08); }
+.cz-dictation label > span { color: var(--muted); font-size: .72rem; padding-top: .6rem; }
+.cz-dictation textarea { width: 100%; resize: vertical; border: 1px solid rgba(255,255,255,.13); background: rgba(255,255,255,.035); color: var(--ink); padding: .65rem .75rem; line-height: 1.6; outline: none; }
+.cz-dictation textarea:focus { border-color: #c6a67e; }
+.cz-dictation label > small { grid-column: 2 / 4; color: #d8b891; line-height: 1.6; }
+.cz-dictation > p { color: var(--muted); }
+.cz-submit { margin-top: .7rem; }
+
+.cz-history { position: fixed; z-index: 30; inset: 0 0 0 auto; width: min(390px, 94vw); background: rgba(14,21,24,.98); transform: translateX(102%); transition: transform .28s ease; border-left: 1px solid rgba(255,255,255,.12); display: grid; grid-template-rows: auto 1fr; }
+.cz-history.is-open { transform: translateX(0); }
+.cz-history > header { display: flex; justify-content: space-between; align-items: center; padding: 1.3rem 1.2rem; border-bottom: 1px solid var(--line); }
+.cz-history > header small { color: var(--muted); }
+.cz-history > header h2 { margin: .2rem 0 0; font-family: "Noto Serif SC", serif; font-weight: 500; }
+.cz-history > div { overflow: auto; padding: .4rem .8rem 1rem; }
+.cz-history > div > button { width: 100%; display: flex; gap: .7rem; align-items: start; text-align: left; padding: .85rem .45rem; border-bottom: 1px solid rgba(255,255,255,.07); }
+.cz-history > div > button > span { display: grid; gap: .16rem; }
+.cz-history strong { font-family: "Noto Serif SC", serif; font-weight: 500; }
+.cz-history small { color: var(--muted); }
+
+.cz-page :focus-visible { outline: 2px solid #d8c5a9; outline-offset: 3px; }
+
+@media (max-width: 900px) {
+  .cz-bg { object-position: 58% center; }
+  .cz-header { padding: 1rem 1.1rem; }
+  .cz-brand span, .cz-header > div > span { display: none; }
+  .cz-stage { min-height: auto; display: block; padding: 2.3rem 1.2rem 7rem; }
+  .cz-title-block { padding-top: 0; width: 66%; }
+  .cz-title-block h1 { font-size: clamp(2.25rem, 12vw, 4rem); }
+  .cz-visibility { display: none; }
+  .cz-route { min-height: auto; margin-top: 2.2rem; gap: .15rem; }
+  .cz-route-line { left: 24px; top: 4%; bottom: 4%; }
+  .cz-line, .cz-line:nth-of-type(3n+1), .cz-line:nth-of-type(3n+2), .cz-line:nth-of-type(3n) { width: 100%; transform: none; padding: .68rem .2rem; gap: .8rem; }
+  .cz-line.is-active { transform: translateX(.35rem); }
+  .cz-marker { flex-basis: 48px; width: 48px; height: 48px; }
+  .cz-line-copy strong { font-size: 1rem; }
+  .cz-note { margin: 2rem 0 0 3.5rem; max-width: none; }
+  .cz-tools { bottom: .7rem; width: calc(100% - 1.2rem); justify-content: space-evenly; }
+  .cz-tools button { min-width: 0; flex: 1; padding-inline: .45rem; }
+  .cz-dictation label { grid-template-columns: 70px 1fr; }
+  .cz-dictation label > svg { grid-column: 2; }
+  .cz-dictation label > small { grid-column: 2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cz-line, .cz-history, .cz-recite > button span { transition: none; }
+}
