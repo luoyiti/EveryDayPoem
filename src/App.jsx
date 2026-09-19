@@ -30,6 +30,7 @@ import { DianjiangchunGazePage } from "./DianjiangchunGazePage.jsx";
 import { ClearAutumnPage } from "./ClearAutumnPage.jsx";
 import { XuyiMooringPage } from "./XuyiMooringPage.jsx";
 import { ChenzhouMistPage } from "./ChenzhouMistPage.jsx";
+import { RiverCompanionsPage } from "./RiverCompanionsPage.jsx";
 import { poemsById } from "./data/poems.js";
 import { dailyPoemId } from "./data/daily.js";
 
@@ -40,6 +41,7 @@ export function App() {
   useEffect(() => { const onHashChange = () => setRouteId(resolvePoemId()); window.addEventListener("hashchange", onHashChange); return () => window.removeEventListener("hashchange", onHashChange); }, []);
   const poem = useMemo(() => poemsById[routeId] || poemsById[dailyPoemId], [routeId]);
   const navigate = (id) => { window.location.hash = id; };
+  if (poem.layout === "chenzui-yufu-autumn") return <RiverCompanionsPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "tashaxing-chenzhou-mist") return <ChenzhouMistPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "xuci-xuyi-twilight") return <XuyiMooringPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "qiufu-clear-autumn") return <ClearAutumnPage poem={poem} onNavigate={navigate} />;
