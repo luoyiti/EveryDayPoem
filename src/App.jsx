@@ -31,16 +31,26 @@ import { ClearAutumnPage } from "./ClearAutumnPage.jsx";
 import { XuyiMooringPage } from "./XuyiMooringPage.jsx";
 import { ChenzhouMistPage } from "./ChenzhouMistPage.jsx";
 import { RiverCompanionsPage } from "./RiverCompanionsPage.jsx";
+import { ColdSpringPavilionPage } from "./ColdSpringPavilionPage.jsx";
 import { poemsById } from "./data/poems.js";
 import { dailyPoemId } from "./data/daily.js";
 
-function resolvePoemId() { const hashId = window.location.hash.slice(1); return poemsById[hashId] ? hashId : dailyPoemId; }
+function resolvePoemId() {
+  const hashId = window.location.hash.slice(1);
+  return poemsById[hashId] ? hashId : dailyPoemId;
+}
 
 export function App() {
   const [routeId, setRouteId] = useState(resolvePoemId);
-  useEffect(() => { const onHashChange = () => setRouteId(resolvePoemId()); window.addEventListener("hashchange", onHashChange); return () => window.removeEventListener("hashchange", onHashChange); }, []);
+  useEffect(() => {
+    const onHashChange = () => setRouteId(resolvePoemId());
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
   const poem = useMemo(() => poemsById[routeId] || poemsById[dailyPoemId], [routeId]);
   const navigate = (id) => { window.location.hash = id; };
+
+  if (poem.layout === "cold-spring-pavilion") return <ColdSpringPavilionPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "chenzui-yufu-autumn") return <RiverCompanionsPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "tashaxing-chenzhou-mist") return <ChenzhouMistPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "xuci-xuyi-twilight") return <XuyiMooringPage poem={poem} onNavigate={navigate} />;

@@ -1,5 +1,6 @@
 {
   "learned": [
+    { "id": "cold-spring-pavilion", "date": "2026-09-21", "status": "published", "genre": "文" },
     { "id": "chenzui-yufu-autumn", "date": "2026-09-20", "status": "published", "genre": "曲" },
     { "id": "tashaxing-chenzhou-mist", "date": "2026-09-19", "status": "published", "genre": "词" },
     { "id": "xuci-xuyi-twilight", "date": "2026-09-18", "status": "published", "genre": "诗" },

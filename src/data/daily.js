@@ -1,1 +1,1 @@
-export const dailyPoemId = "chenzui-yufu-autumn";
+export const dailyPoemId = "cold-spring-pavilion";
