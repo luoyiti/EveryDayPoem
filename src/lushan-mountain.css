@@ -1,0 +1,259 @@
+.lushan-page {
+  min-height: 100vh;
+  background: #101614;
+  color: #eef0e9;
+  font-family: "Noto Sans SC", system-ui, sans-serif;
+  display: grid;
+  grid-template-columns: minmax(340px, 46vw) 1fr;
+}
+
+.lushan-page * { box-sizing: border-box; }
+.lushan-page button, .lushan-page a { font: inherit; }
+.lushan-page button { cursor: pointer; }
+
+.lushan-landscape {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #17201d;
+}
+
+.lushan-landscape > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 48% center;
+  display: block;
+}
+
+.lushan-image-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 10, 9, .38) 0%, rgba(6, 10, 9, .08) 38%, rgba(6, 10, 9, .78) 100%);
+}
+
+.lushan-topbar {
+  position: absolute;
+  inset: 28px 30px auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  z-index: 2;
+}
+
+.lushan-topbar a { color: inherit; text-decoration: none; display: grid; gap: 4px; }
+.lushan-topbar strong { font-family: "Noto Serif SC", serif; letter-spacing: .12em; font-size: 16px; }
+.lushan-topbar span { color: rgba(238, 240, 233, .68); font-size: 12px; letter-spacing: .06em; }
+.lushan-topbar button,
+.lushan-actions button,
+.lushan-note button,
+.lushan-sheet button,
+.lushan-study-sheet button,
+.lushan-history button {
+  color: inherit;
+  background: transparent;
+  border: 0;
+}
+.lushan-topbar > button { border-bottom: 1px solid rgba(238, 240, 233, .46); padding: 0 0 5px; font-size: 13px; }
+
+.lushan-heading {
+  position: absolute;
+  left: 34px;
+  right: 34px;
+  bottom: 74px;
+  z-index: 2;
+  max-width: 560px;
+}
+
+.lushan-heading small { color: rgba(238, 240, 233, .72); font-size: 12px; letter-spacing: .16em; }
+.lushan-heading h1 { font-family: "Noto Serif SC", serif; font-size: clamp(42px, 5.4vw, 76px); font-weight: 500; letter-spacing: .08em; margin: 12px 0 10px; line-height: 1.04; }
+.lushan-heading p { margin: 0; display: flex; gap: 14px; align-items: baseline; font-family: "Noto Serif SC", serif; }
+.lushan-heading p span { color: rgba(238, 240, 233, .66); font-family: "Noto Sans SC", sans-serif; font-size: 12px; letter-spacing: .12em; }
+
+.lushan-distance {
+  position: absolute;
+  left: 34px;
+  bottom: 28px;
+  width: min(260px, 62%);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+  color: rgba(238, 240, 233, .62);
+  font-size: 10px;
+  letter-spacing: .16em;
+}
+.lushan-distance i { height: 1px; background: rgba(238, 240, 233, .34); position: relative; }
+.lushan-distance i::after { content: ""; position: absolute; right: 18%; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: #eef0e9; }
+
+.lushan-reading {
+  min-height: 100vh;
+  padding: 44px clamp(26px, 4vw, 68px) 54px;
+  background: #f0efe6;
+  color: #17201d;
+  display: grid;
+  grid-template-rows: auto minmax(480px, 1fr) auto;
+  gap: 26px;
+  position: relative;
+}
+
+.lushan-reading-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; }
+.lushan-reading-head small { color: #667069; font-size: 11px; letter-spacing: .2em; }
+.lushan-reading-head h2 { margin: 6px 0 0; font-family: "Noto Serif SC", serif; font-size: clamp(24px, 2.6vw, 38px); font-weight: 500; }
+.lushan-reading-head > p { max-width: 220px; margin: 0; color: #6c746f; font-size: 12px; line-height: 1.7; }
+
+.lushan-trail { position: relative; min-height: 470px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, 1fr); column-gap: 12%; padding: 14px 0; }
+.lushan-trail-line { position: absolute; inset: 7% 50% 7%; width: 1px; background: #b8b9ae; transform: rotate(10deg); transform-origin: center; }
+.lushan-trail-line::before,
+.lushan-trail-line::after { content: ""; position: absolute; width: 9px; height: 9px; border: 1px solid #8a938c; border-radius: 50%; left: -4px; background: #f0efe6; }
+.lushan-trail-line::before { top: -4px; }
+.lushan-trail-line::after { bottom: -4px; }
+
+.lushan-stop {
+  width: min(100%, 360px);
+  text-align: left;
+  color: #26312d;
+  background: transparent;
+  border: 0;
+  padding: 10px 0 14px;
+  align-self: center;
+  position: relative;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.lushan-stop::before { content: ""; position: absolute; top: 20px; width: 8px; height: 8px; border-radius: 50%; background: #9aa39d; box-shadow: 0 0 0 7px #f0efe6; }
+.lushan-stop-1, .lushan-stop-3 { grid-column: 1; justify-self: end; padding-right: 34px; }
+.lushan-stop-2, .lushan-stop-4 { grid-column: 2; justify-self: start; padding-left: 34px; }
+.lushan-stop-1 { grid-row: 1; }
+.lushan-stop-2 { grid-row: 2; }
+.lushan-stop-3 { grid-row: 3; }
+.lushan-stop-4 { grid-row: 4; }
+.lushan-stop-1::before, .lushan-stop-3::before { right: -5px; }
+.lushan-stop-2::before, .lushan-stop-4::before { left: -5px; }
+.lushan-stop span { display: flex; gap: 10px; color: #7d867f; font-size: 11px; letter-spacing: .16em; }
+.lushan-stop span b { color: #4f5a54; font-weight: 600; }
+.lushan-stop p { margin: 8px 0 0; font-family: "Noto Serif SC", serif; font-size: clamp(21px, 2.1vw, 31px); line-height: 1.55; letter-spacing: .035em; }
+.lushan-stop:not(.is-active) { opacity: .48; }
+.lushan-stop.is-active { transform: translateY(-2px); opacity: 1; }
+.lushan-stop.is-active::before { background: #6e4328; }
+
+.lushan-note {
+  position: absolute;
+  right: clamp(24px, 3.4vw, 58px);
+  bottom: 112px;
+  width: min(310px, 38%);
+  padding-top: 18px;
+  border-top: 1px solid #aeb1a7;
+  background: rgba(240, 239, 230, .94);
+}
+.lushan-note > div { display: flex; justify-content: space-between; align-items: baseline; color: #747d77; }
+.lushan-note small { font-size: 10px; letter-spacing: .18em; }
+.lushan-note strong { font-family: "Noto Serif SC", serif; font-weight: 500; }
+.lushan-note h3 { margin: 14px 0 8px; font-family: "Noto Serif SC", serif; font-weight: 500; font-size: 18px; }
+.lushan-note p { margin: 0; color: #4d5752; font-size: 13px; line-height: 1.85; }
+.lushan-note em { display: block; margin-top: 12px; color: #6e4328; font-family: "Noto Serif SC", serif; font-style: normal; letter-spacing: .18em; }
+.lushan-note > button { margin-top: 14px; padding: 7px 0; border-bottom: 1px solid #6b746e; color: #3d4742; font-size: 12px; }
+.lushan-note > button:disabled { opacity: .42; cursor: default; }
+
+.lushan-actions { display: flex; gap: 24px; align-items: center; border-top: 1px solid #c8c8be; padding-top: 18px; }
+.lushan-actions button { color: #424d47; padding: 5px 0; border-bottom: 1px solid transparent; }
+.lushan-actions button:hover { border-color: #69736d; }
+
+.lushan-overlay { position: fixed; inset: 0; z-index: 20; display: grid; place-items: end; }
+.lushan-scrim { position: absolute; inset: 0; width: 100%; border: 0; background: rgba(8, 12, 11, .62) !important; }
+.lushan-sheet,
+.lushan-study-sheet {
+  position: relative;
+  z-index: 1;
+  width: min(720px, 92vw);
+  max-height: 88vh;
+  overflow: auto;
+  background: #f3f1e8;
+  color: #1c2622;
+  padding: 28px clamp(24px, 4vw, 46px) 34px;
+  border-top: 4px solid #6e4328;
+}
+.lushan-sheet header,
+.lushan-study-sheet header { display: flex; justify-content: space-between; gap: 20px; align-items: center; border-bottom: 1px solid #c7c7bd; padding-bottom: 14px; }
+.lushan-sheet header span,
+.lushan-study-sheet header span { font-family: "Noto Serif SC", serif; font-size: 19px; }
+.lushan-sheet header button,
+.lushan-study-sheet header button { color: #59625d; padding: 4px 0; }
+.lushan-sheet > p { max-width: 32em; margin: 28px 0 0; font-family: "Noto Serif SC", serif; line-height: 2; font-size: 17px; }
+
+.lushan-recite { padding-top: 26px; }
+.lushan-recite > small { color: #707973; letter-spacing: .12em; }
+.lushan-recite > button { display: block; width: 100%; min-height: 150px; margin: 18px 0; border-top: 1px solid #c5c6bc; border-bottom: 1px solid #c5c6bc; font-family: "Noto Serif SC", serif; font-size: clamp(24px, 3vw, 38px); }
+.lushan-recite > button.is-hidden span { color: transparent; text-shadow: 0 0 12px rgba(28, 38, 34, .35); }
+.lushan-recite > p { color: #5f6863; line-height: 1.8; }
+.lushan-recite > div { display: flex; gap: 22px; margin-top: 18px; }
+.lushan-recite > div button { border-bottom: 1px solid #6d756f; padding: 6px 0; }
+
+.lushan-dictation { padding-top: 24px; display: grid; gap: 16px; }
+.lushan-dictation h2 { margin: 0 0 6px; font-family: "Noto Serif SC", serif; font-weight: 500; }
+.lushan-dictation label { display: grid; gap: 7px; }
+.lushan-dictation label > span { color: #6f7772; font-size: 11px; letter-spacing: .12em; }
+.lushan-dictation textarea { resize: vertical; width: 100%; border: 0; border-bottom: 1px solid #aeb2aa; background: #ebe9df; color: #1b2621; padding: 10px 12px; font-family: "Noto Serif SC", serif; font-size: 17px; line-height: 1.6; }
+.lushan-dictation small.is-correct { color: #46624d; }
+.lushan-dictation small.is-wrong { color: #8a3e2d; font-family: "Noto Serif SC", serif; }
+.lushan-check { justify-self: start; border-bottom: 1px solid #505b55 !important; padding: 7px 0 !important; }
+
+.lushan-history {
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(420px, 92vw);
+  background: #141c19;
+  color: #f1f1e9;
+  padding: 28px;
+  transform: translateX(104%);
+  transition: transform .25s ease;
+  box-shadow: -20px 0 50px rgba(0, 0, 0, .24);
+}
+.lushan-history.is-open { transform: translateX(0); }
+.lushan-history header { display: flex; justify-content: space-between; align-items: start; gap: 20px; padding-bottom: 18px; border-bottom: 1px solid rgba(241, 241, 233, .22); }
+.lushan-history h2 { margin: 5px 0 0; font-family: "Noto Serif SC", serif; font-weight: 500; }
+.lushan-history header small { color: rgba(241, 241, 233, .58); }
+.lushan-history > div { overflow: auto; height: calc(100vh - 120px); padding-top: 10px; }
+.lushan-history > div > button { width: 100%; text-align: left; display: grid; gap: 3px; padding: 13px 0; border-bottom: 1px solid rgba(241, 241, 233, .12); }
+.lushan-history > div strong { font-family: "Noto Serif SC", serif; font-weight: 500; }
+.lushan-history > div small { color: rgba(241, 241, 233, .55); }
+
+.lushan-page button:focus-visible,
+.lushan-page a:focus-visible,
+.lushan-page textarea:focus-visible { outline: 2px solid #9b6a45; outline-offset: 4px; }
+
+@media (max-width: 860px) {
+  .lushan-page { display: block; background: #f0efe6; }
+  .lushan-landscape { position: relative; height: 54svh; min-height: 430px; }
+  .lushan-landscape > img { object-position: 52% center; }
+  .lushan-heading { bottom: 52px; }
+  .lushan-heading h1 { font-size: clamp(40px, 12vw, 62px); }
+  .lushan-reading { padding: 30px 22px 42px; display: block; min-height: auto; }
+  .lushan-reading-head { align-items: start; }
+  .lushan-reading-head > p { display: none; }
+  .lushan-trail { margin-top: 28px; min-height: auto; display: block; padding-left: 24px; }
+  .lushan-trail-line { left: 8px; right: auto; top: 18px; bottom: 18px; height: auto; transform: none; }
+  .lushan-stop { width: 100%; padding: 12px 0 20px 22px; justify-self: auto; }
+  .lushan-stop::before { left: -20px !important; right: auto !important; top: 22px; }
+  .lushan-stop p { font-size: 23px; }
+  .lushan-note { position: static; width: 100%; margin-top: 26px; padding-top: 18px; background: transparent; }
+  .lushan-actions { margin-top: 30px; gap: 20px; flex-wrap: wrap; }
+}
+
+@media (max-width: 520px) {
+  .lushan-topbar { inset: 20px 20px auto; }
+  .lushan-topbar span { display: none; }
+  .lushan-heading { left: 22px; right: 22px; }
+  .lushan-distance { left: 22px; bottom: 18px; }
+  .lushan-reading-head h2 { font-size: 26px; }
+  .lushan-sheet, .lushan-study-sheet { width: 100vw; padding: 24px 20px 30px; max-height: 91vh; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lushan-stop, .lushan-history { transition: none; }
+}

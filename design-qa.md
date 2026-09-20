@@ -1,33 +1,35 @@
-# Design QA — 每日古诗文 / 冷泉亭记
+# Design QA — 每日古诗文 / 鲁山山行
 
 ## Visual brief
 
-- 时间：正文同时写“春之日”与“夏之夜”，页面不锁定为某一史实时刻；生成图采用柔和漫射日光，只作为山水质感，不承担具体时辰叙事。
-- 地点：馀杭灵隐寺西南隅的冷泉亭语境；不尝试复原唐代灵隐寺建筑群，只保留“亭在山下、水中央、山树为盖、岩石为屏”的空间关系。
-- 天气与色温：湿润、清透、低饱和，青灰水色与深绿树影为主，少量木色；避免通用江南烟雨和夸张霞光。
-- 材质：清泉、湿石、苔藓、深林、旧木亭、薄雾。
-- 核心意象：水中央小亭、山树、岩石、云气、与阶相平的清泉。
-- 视觉命题：**先用“馀杭—灵隐—冷泉亭”把空间一层层收窄，再让亭本身几乎消失进树、石、云、水；阅读末段再从一亭打开到五亭与前人营构，使“述而不作”成为最终落点。**
-- 构图：不用居中大卡片。上半屏为大幅泉亭环境；下半屏把六段原文排成左右错位的“石阶水路”，左侧水尺显示阅读位置，右侧仅保留一块随段切换的注脚。
+- 时间：霜后深秋至初冬的清晨；不绑定具体史实时辰，只以冷色漫射光体现“霜落、林空”的空气感。
+- 地点：鲁山语境中的山径与溪谷；不复原具体宋代地标，只保留群峰、幽径、疏林、溪流和云气的关系。
+- 天气与色温：清冷、湿润、薄雾，蓝灰山体与褐灰林木为主，少量低饱和暖褐来自枯叶和鹿身。
+- 材质：霜草、湿石、山径、疏林、清溪、云雾。
+- 核心意象：高低群山、随步而改的峰形、幽径、霜林、熊升树、鹿饮溪、云外鸡声。
+- 视觉命题：**山景不是一幅静止全景，而是随着脚步不断改形；页面让读者沿四个错位停点前行，最后把视觉主动撤掉，只留下“云外一声鸡”，完成从看见到听见的感官转折。**
+- 构图：桌面端左侧固定大幅山径环境，右侧为错位高低的四站“山径”；原文沿路径起伏而非自上而下排卡片。移动端改为纵向步道，仍保留四站和最后的听觉落点。
 
 ## Text and source check
 
-- 维基文库《冷泉亭记》：页面注明作品收入《全唐文》卷六百七十六与《白氏长庆集》卷四十三；本页采用其“馀杭”“由寺观言”“泉渟渟，风泠泠”“卢给事元辅”等正文系统。
-- 识典古籍《白居易集·冷泉亭记》：交叉核对篇章结构、春夏泉亭段、五亭营建与“长庆三年八月十三日记”；其数字整理有个别字形/异文，与主本文本不混拼。
-- 本轮候选为 `冷泉亭记 / 白居易 / 东南山水，馀杭郡为最`（文）、`江楼夕望招客 / 白居易 / 海天东望夕茫茫`（诗）、`水仙子·咏江南 / 张养浩 / 一江烟水照晴岚`（曲）。三项均按仓库 matcher 命令返回 0；精确任务 HEAD 的仓库检索亦未发现已发布同篇。最终选择《冷泉亭记》，避免昨日连续散曲，并让最近七篇保持五体裁并存。
+- 识典古籍《宛陵先生集·鲁山山行》：核对题名、作者及“适与野情惬……云外一声鸡”八句正文，本页以该集数字整理为主。
+- 维基文库《梅尧臣集/卷07》：交叉核对《鲁山山行》在梅尧臣诗集中的卷次与通行文本；两源均作“幽径独行迷”。
+- 本轮候选为 `鲁山山行 / 梅尧臣 / 适与野情惬`（诗）、`鹧鸪天·鹅湖归病起作 / 辛弃疾 / 枕簟溪堂冷欲秋`（词）、`西湖七月半 / 张岱 / 西湖七月半，一无可看`（文）。三项 `npm run check:exclusion` 均返回 0；精确任务 HEAD 的仓库搜索亦未发现候选题名或首句已存在。
+- 最近七篇（发布前）体裁为：文、曲、词、诗、赋、词、文；已覆盖五类。本次选择“诗”，避免继续叠加“文/词”，并让最近七篇更新为诗、文、曲、词、诗、赋、词，仍覆盖五类。
 
 ## Asset and implementation
 
-- `public/assets/poems/cold-spring-pavilion.webp`：本轮 ImageGen 独立生成后转换为 WebP，1672×941；主体为清泉、湿石、深林与小亭，不含文字或 UI。
-- `src/ColdSpringPavilionPage.jsx`：阅读结构为“入亭—春夏—近水—洗尘—五亭—述作”六层；点击原文切换逐段注释，支持键盘上下键、Escape、译文、赏析、背诵、默写与历史入口。
-- `src/cold-spring-pavilion.css`：首屏图像与下方错位石阶阅读区分离；桌面为水尺 / 水路 / 注脚三域，移动端改为单列；包含 focus-visible、足够正文对比与 `prefers-reduced-motion`。
-- 数据契约：唯一 id/layout、6 段原文、6 条一一对应注释、译文、140 字赏析、学习文案、资源路径与 2026-09-21（Asia/Shanghai）学习记录均完成源代码级检查。
+- `public/assets/poems/lushan-mountain-trail.webp`：本轮 ImageGen 独立生成后转换为 WebP，640×360，9658 B；画面含山径、霜林、群峰、溪流与鹿，不含文字或 UI。
+- `src/LushanMountainPage.jsx`：独立页面采用“入山—转峰—霜林—闻鸡”四站路径结构；左右方向键或点击停点切换逐联注释，末站只保留“云外 · 一声鸡”的听觉提示；提供译文、赏析、背诵、默写与历史入口。
+- `src/lushan-mountain.css`：桌面为“固定山景 + 起伏山径”双区布局，移动端转为纵向步道；包含 `focus-visible`、正文对比和 `prefers-reduced-motion`。
+- 数据契约：唯一 id/layout、4 联原文、4 条一一对应注释、译文、135 字赏析、学习文案、资源路径与 2026-09-21（Asia/Shanghai）学习记录已完成源代码级检查。
 
 ## Verification
 
-- 在干净的 connector-reconstructed 工作区执行三组候选 `check:exclusion`，三项均为 0。
-- `npm run bootstrap` 返回退出码 20，并输出 `DEPENDENCY_NETWORK_UNAVAILABLE`；因此按仓库协议继续，未执行本地 production build / Sites tests / 桌面与手机浏览器运行时检查。
-- 依赖无关的 `npm run verify:offline` 在重建工作区通过：132 条计数契约、5 项 matcher checks、daily tests 2/2。最终提交仍必须由 GitHub Actions 与 Vercel 对实际 Git 树再次执行，作为权威 build gate。
+- 精确任务基线 SHA 的 GitHub Actions `Validate poetry content` 已在本轮重新运行（attempt 2）并成功，其中 `Network-independent content checks` 即仓库原生 `npm run verify:offline`。
+- 在 connector-reconstructed 验证工作区执行三组候选 `npm run check:exclusion`，三项均退出 0；并对精确 HEAD 做题名/首句仓库检索复核。
+- `npm run bootstrap` 返回退出码 20，并输出 `DEPENDENCY_NETWORK_UNAVAILABLE`；因此按仓库协议继续，本地 production build / Sites tests / 桌面与手机浏览器运行时检查未执行。
+- 提交前 connector-reconstructed `npm run verify:offline` 通过：132 条计数契约、5 项 matcher checks、daily tests 2/2；最终提交仍由 GitHub Actions 与 Vercel 对实际 Git 树再次执行，作为权威 build gate。
 - 未提交 `dist/`、`.vercel/`、`node_modules/`、`.firecrawl/`、QA 截图或生成器中间文件。
 
 final result: source review completed; remote build gate pending

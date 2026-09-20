@@ -32,6 +32,7 @@ import { XuyiMooringPage } from "./XuyiMooringPage.jsx";
 import { ChenzhouMistPage } from "./ChenzhouMistPage.jsx";
 import { RiverCompanionsPage } from "./RiverCompanionsPage.jsx";
 import { ColdSpringPavilionPage } from "./ColdSpringPavilionPage.jsx";
+import { LushanMountainPage } from "./LushanMountainPage.jsx";
 import { poemsById } from "./data/poems.js";
 import { dailyPoemId } from "./data/daily.js";
 
@@ -50,6 +51,7 @@ export function App() {
   const poem = useMemo(() => poemsById[routeId] || poemsById[dailyPoemId], [routeId]);
   const navigate = (id) => { window.location.hash = id; };
 
+  if (poem.layout === "lushan-mountain-walk") return <LushanMountainPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "cold-spring-pavilion") return <ColdSpringPavilionPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "chenzui-yufu-autumn") return <RiverCompanionsPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "tashaxing-chenzhou-mist") return <ChenzhouMistPage poem={poem} onNavigate={navigate} />;
