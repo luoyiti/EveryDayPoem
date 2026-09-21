@@ -1,1 +1,1 @@
-export const dailyPoemId = "lushan-mountain-walk";
+export const dailyPoemId = "ehu-recovery";
