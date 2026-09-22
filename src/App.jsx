@@ -35,6 +35,7 @@ import { ColdSpringPavilionPage } from "./ColdSpringPavilionPage.jsx";
 import { LushanMountainPage } from "./LushanMountainPage.jsx";
 import { EhuRecoveryPage } from "./EhuRecoveryPage.jsx";
 import { ShahuWestwardPage } from "./ShahuWestwardPage.jsx";
+import { YingfuCagePage } from "./YingfuCagePage.jsx";
 import { poemsById } from "./data/poems.js";
 import { dailyPoemId } from "./data/daily.js";
 
@@ -53,6 +54,7 @@ export function App() {
   const poem = useMemo(() => poemsById[routeId] || poemsById[dailyPoemId], [routeId]);
   const navigate = (id) => { window.location.hash = id; };
 
+  if (poem.layout === "yingfu-cage-dawn") return <YingfuCagePage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "shahu-westward-route") return <ShahuWestwardPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "ehu-evening-fold") return <EhuRecoveryPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "lushan-mountain-walk") return <LushanMountainPage poem={poem} onNavigate={navigate} />;

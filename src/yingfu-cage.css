@@ -1,0 +1,111 @@
+@import "@fontsource/noto-serif-sc/500.css";
+@import "@fontsource/noto-serif-sc/700.css";
+@import "@fontsource/noto-sans-sc/400.css";
+@import "@fontsource/noto-sans-sc/600.css";
+
+.yingfu-page { min-height:100vh; background:#e8e5dc; color:#18201c; font-family:"Noto Sans SC",sans-serif; }
+.yingfu-page button,.yingfu-page textarea { font:inherit; }
+.yingfu-hero { position:relative; min-height:72vh; overflow:hidden; background:#111815; color:#f7f1df; }
+.yingfu-hero-image { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
+.yingfu-hero-shade { position:absolute; inset:0; background:linear-gradient(90deg,rgba(9,14,13,.82) 0%,rgba(9,14,13,.54) 34%,rgba(9,14,13,.05) 70%),linear-gradient(0deg,rgba(7,12,10,.48),transparent 45%); }
+.yingfu-topbar { position:relative; z-index:2; display:flex; justify-content:space-between; align-items:flex-start; padding:28px clamp(22px,5vw,72px); }
+.yingfu-topbar a { color:inherit; text-decoration:none; display:flex; gap:18px; align-items:baseline; }
+.yingfu-topbar strong { font-family:"Noto Serif SC",serif; letter-spacing:.14em; }
+.yingfu-topbar span { font-size:12px; opacity:.7; letter-spacing:.18em; }
+.yingfu-topbar button,.yingfu-tools button,.yingfu-note button { border:0; border-bottom:1px solid currentColor; background:transparent; color:inherit; padding:6px 0; cursor:pointer; }
+.yingfu-title-block { position:relative; z-index:2; margin:clamp(100px,18vh,190px) 0 0 clamp(24px,7vw,110px); max-width:620px; }
+.yingfu-title-block small { letter-spacing:.2em; font-size:12px; opacity:.72; }
+.yingfu-title-block h1 { margin:14px 0 8px; font:700 clamp(54px,9vw,118px)/.95 "Noto Serif SC",serif; letter-spacing:.08em; }
+.yingfu-title-block p { margin:0; display:flex; gap:16px; align-items:center; font:500 18px/1.5 "Noto Serif SC",serif; }
+.yingfu-title-block p span { font:400 12px/1.4 "Noto Sans SC",sans-serif; padding-left:16px; border-left:1px solid rgba(255,255,255,.4); letter-spacing:.14em; }
+.yingfu-thesis { position:absolute; z-index:2; right:clamp(24px,7vw,110px); bottom:42px; width:min(390px,36vw); display:grid; grid-template-columns:auto 1fr; gap:7px 16px; align-items:center; text-align:right; }
+.yingfu-thesis span { grid-column:1/-1; font-size:11px; letter-spacing:.28em; opacity:.65; }
+.yingfu-thesis b { font-family:"Noto Serif SC",serif; font-weight:500; font-size:15px; }
+.yingfu-thesis i { height:1px; background:linear-gradient(90deg,rgba(255,255,255,.2),rgba(242,202,117,.9)); }
+
+.yingfu-reading { padding:clamp(56px,8vw,110px) clamp(22px,5vw,72px) 72px; }
+.yingfu-reading-head { max-width:1240px; margin:0 auto 48px; display:grid; grid-template-columns:1.1fr .9fr; align-items:end; gap:40px; }
+.yingfu-reading-head small,.yingfu-note small { text-transform:uppercase; letter-spacing:.18em; color:#657066; font-size:11px; }
+.yingfu-reading-head h2 { margin:8px 0 0; font:700 clamp(28px,4vw,48px)/1.2 "Noto Serif SC",serif; }
+.yingfu-reading-head p { margin:0; max-width:32em; color:#59625c; line-height:1.9; }
+.yingfu-reading-grid { max-width:1240px; margin:auto; display:grid; grid-template-columns:130px minmax(0,1fr) minmax(260px,340px); gap:clamp(24px,4vw,58px); align-items:start; }
+.yingfu-stage-rail { position:sticky; top:24px; display:flex; flex-direction:column; border-top:1px solid #aeb5ad; }
+.yingfu-stage-rail button { appearance:none; border:0; border-bottom:1px solid #c4c9c1; background:transparent; color:#697169; text-align:left; padding:18px 0; cursor:pointer; display:grid; grid-template-columns:30px 1fr; gap:8px; align-items:center; }
+.yingfu-stage-rail b { font:700 21px/1 "Noto Serif SC",serif; }
+.yingfu-stage-rail span { font-size:11px; line-height:1.4; }
+.yingfu-stage-rail button.is-active { color:#9c5b2f; transform:translateX(8px); }
+.yingfu-original { border-top:1px solid #8f988e; }
+.yingfu-original button { width:100%; display:block; text-align:left; padding:28px 6px 30px; border:0; border-bottom:1px solid #bdc3ba; background:transparent; color:#3c4540; cursor:pointer; }
+.yingfu-original button small { display:block; margin-bottom:12px; color:#7a827c; font-size:11px; letter-spacing:.18em; }
+.yingfu-original p { margin:0; font:500 clamp(22px,2.5vw,33px)/1.95 "Noto Serif SC",serif; letter-spacing:.055em; }
+.yingfu-original button.is-active { color:#121a16; border-bottom-color:#9c5b2f; }
+.yingfu-original button.is-active small { color:#9c5b2f; }
+.yingfu-note { position:sticky; top:24px; border-top:3px solid #18201c; padding-top:18px; }
+.yingfu-note h3 { margin:10px 0 14px; font:700 22px/1.45 "Noto Serif SC",serif; }
+.yingfu-note p { margin:0; color:#4e5851; line-height:1.95; }
+.yingfu-contrast { margin:28px 0 26px; display:grid; grid-template-columns:auto 1fr auto; gap:10px; align-items:center; font-size:11px; color:#6d756f; }
+.yingfu-contrast i { height:1px; background:linear-gradient(90deg,#7f8780,#bc7b47); }
+.yingfu-contrast b { color:#9c5b2f; font-weight:600; }
+.yingfu-note button { color:#7c4b2a; }
+.yingfu-note button:disabled { opacity:.4; cursor:default; }
+.yingfu-tools { max-width:1240px; margin:52px auto 0; padding-top:18px; border-top:1px solid #aeb5ad; display:flex; gap:28px; justify-content:flex-end; }
+.yingfu-tools button { color:#313a35; }
+
+.yingfu-overlay { position:fixed; z-index:30; inset:0; display:grid; place-items:center; padding:20px; }
+.yingfu-scrim { position:absolute; inset:0; border:0; background:rgba(8,12,10,.72); }
+.yingfu-sheet,.yingfu-study-sheet { position:relative; width:min(780px,94vw); max-height:86vh; overflow:auto; background:#f1eee5; color:#1c241f; box-shadow:0 24px 80px rgba(0,0,0,.34); }
+.yingfu-sheet { padding:clamp(28px,5vw,64px); }
+.yingfu-sheet header,.yingfu-study-sheet header { display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #b8bdb6; padding-bottom:16px; margin-bottom:26px; }
+.yingfu-sheet header span,.yingfu-study-sheet header span { font:700 19px/1 "Noto Serif SC",serif; letter-spacing:.12em; }
+.yingfu-sheet header button,.yingfu-study-sheet header button { border:0; background:none; color:#5f685f; cursor:pointer; }
+.yingfu-sheet > p { margin:0; font:500 18px/2 "Noto Serif SC",serif; }
+.yingfu-sheet footer { margin-top:28px; padding-top:18px; border-top:1px solid #d1d3cc; color:#875531; font-size:13px; }
+.yingfu-study-sheet { padding:28px clamp(24px,4vw,48px) 42px; }
+.yingfu-recite > small { color:#7b837d; letter-spacing:.12em; }
+.yingfu-recite > button { width:100%; min-height:190px; margin:18px 0; padding:30px; border:1px solid #9fa69e; background:#e7e3d9; color:#17201a; cursor:pointer; }
+.yingfu-recite > button span { font:500 clamp(20px,3vw,30px)/1.9 "Noto Serif SC",serif; }
+.yingfu-recite > button.is-hidden span { visibility:hidden; }
+.yingfu-recite > p { color:#59625c; line-height:1.8; }
+.yingfu-recite > div { display:flex; justify-content:flex-end; gap:10px; }
+.yingfu-recite > div button,.yingfu-check { border:1px solid #717970; background:transparent; padding:10px 16px; cursor:pointer; }
+.yingfu-dictation h2 { font:700 24px/1.4 "Noto Serif SC",serif; }
+.yingfu-dictation label { display:block; margin:20px 0; }
+.yingfu-dictation label > span { display:block; margin-bottom:8px; color:#697169; font-size:12px; }
+.yingfu-dictation textarea { box-sizing:border-box; width:100%; resize:vertical; padding:12px; border:1px solid #a9afa8; background:#faf8f1; color:#1b211d; line-height:1.7; }
+.yingfu-dictation label small { display:block; margin-top:6px; line-height:1.7; }
+.yingfu-dictation .is-correct { color:#386847; }
+.yingfu-dictation .is-wrong { color:#914633; }
+.yingfu-check { float:right; }
+
+.yingfu-history { position:fixed; z-index:40; top:0; right:0; width:min(420px,92vw); height:100vh; background:#161d19; color:#ece8dc; transform:translateX(102%); transition:transform .3s ease; box-shadow:-20px 0 60px rgba(0,0,0,.3); }
+.yingfu-history.is-open { transform:translateX(0); }
+.yingfu-history header { display:flex; justify-content:space-between; align-items:center; padding:28px; border-bottom:1px solid rgba(255,255,255,.18); }
+.yingfu-history header small { opacity:.58; }
+.yingfu-history header h2 { margin:4px 0 0; font:700 25px/1.2 "Noto Serif SC",serif; }
+.yingfu-history header button { color:#e8e4d8; border:0; background:none; cursor:pointer; }
+.yingfu-history > div { height:calc(100vh - 105px); overflow:auto; }
+.yingfu-history > div button { width:100%; display:flex; justify-content:space-between; gap:18px; border:0; border-bottom:1px solid rgba(255,255,255,.12); background:none; color:inherit; padding:17px 28px; text-align:left; cursor:pointer; }
+.yingfu-history strong { font-family:"Noto Serif SC",serif; }
+.yingfu-history small { opacity:.6; }
+
+.yingfu-page button:focus-visible,.yingfu-page textarea:focus-visible,.yingfu-page a:focus-visible { outline:3px solid #c7854c; outline-offset:4px; }
+
+@media (max-width: 850px) {
+  .yingfu-hero { min-height:68vh; }
+  .yingfu-hero-image { object-position:58% center; }
+  .yingfu-hero-shade { background:linear-gradient(90deg,rgba(8,13,11,.82),rgba(8,13,11,.36) 72%),linear-gradient(0deg,rgba(8,13,11,.58),transparent 50%); }
+  .yingfu-topbar span { display:none; }
+  .yingfu-title-block { margin:21vh 22px 0; }
+  .yingfu-thesis { right:22px; bottom:28px; width:54vw; }
+  .yingfu-reading-head { grid-template-columns:1fr; gap:18px; }
+  .yingfu-reading-grid { grid-template-columns:1fr; gap:26px; }
+  .yingfu-stage-rail { position:static; flex-direction:row; overflow:auto; border-top:1px solid #aeb5ad; }
+  .yingfu-stage-rail button { flex:0 0 116px; grid-template-columns:24px 1fr; padding:14px 8px; }
+  .yingfu-stage-rail button.is-active { transform:none; color:#9c5b2f; }
+  .yingfu-note { position:static; }
+  .yingfu-tools { justify-content:flex-start; flex-wrap:wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yingfu-history,.yingfu-stage-rail button { transition:none; }
+}
