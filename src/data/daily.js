@@ -1,1 +1,1 @@
-export const dailyPoemId = "yingfu-caged-oriole";
+export const dailyPoemId = "shuixianzi-jiangnan";
