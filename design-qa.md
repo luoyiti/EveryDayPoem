@@ -1,29 +1,28 @@
-# Design QA — 每日古诗文 / 水仙子·咏江南
+# Design QA — 每日古诗文 / 书河上亭壁
 
 ## Visual brief
-- 时间与地点：不指定具体史实时辰，以晴日薄岚下的江南秋水为场景；只取正文可支持的烟水、晴岚、画檐、芰荷、沙鸥、画船、酒旗。
-- 核心命题：**景物先走，心意最后抵达。** 视线从远处烟岚进入两岸人家，再落到芰荷与沙鸥，随后随香风、画船、酒旗向前，直到末句才出现“爱杀江南”的观看者。
-- 构图：左侧留大面积低细节烟水作为标题负空间，右侧承载画檐、芰荷、鸥鸟、远舟与无字酒旗；正文区采用四站横向“水路”而非上一页的三列笼内/檐外结构。
-- 色彩：低饱和青灰水色、岚白、荷叶绿和少量暖木色；无人物特写、现代物件、可读文字。
+- 时间与地点：河阳一带河上亭的秋日傍晚；视觉只取组诗小序与秋篇可支持的高亭、阔河、稀樯、远树、疏林、秋山和夕阳，不复原具体亭址。
+- 核心命题：**河面越开，人越小；夕阳只照半山，让苍茫与余温同时存在。** 页面从近处高栏向河面、疏林、半山逐层拉远，呼应两联由近而远的观看。
+- 构图：首屏从亭内阴影向右侧开阔河面展开；栏杆成为近景斜线，水面承担大面积负空间，稀少船桅与半山夕照落在远处。正文区只设“河 / 山”两层远望，不沿用上一页四站水路。
+- 色温与材质：冷灰蓝河水、暗木亭栏、低饱和枯褐林色与克制夕阳金；真实木、瓦、水、落叶和薄雾材质，无人物、现代物件或可读文字。
 
 ## Text and source check
-- 古文岛《水仙子·咏江南》核对作者、时代、题名及完整正文，采用“芰荷丛一段秋光淡”“酒旗儿风外飐”“爱杀江南”文本。
-- 弥勒市人民政府《诗意栖居红河水乡》引用本曲前半，交叉核对“一江烟水照晴岚，两岸人家接画檐，芰荷丛一段秋光淡。看沙鸥舞再三，卷香风十里珠帘”。
-- 华东师范大学转载文汇报文章再次引用开篇两句，辅助核对江南水乡意象。
-- 赏析 131 字；4 段原文与 4 条注释一一对应。
-- 候选：`水仙子·咏江南 / 张养浩 / 一江烟水照晴岚`（曲）、`书河上亭壁 / 寇准 / 岸阔樯稀波渺茫`（诗）、`蝶恋花·槛菊愁烟兰泣露 / 晏殊 / 槛菊愁烟兰泣露`（词）。精确基线的课程排除库题名/首句检索均无命中；最终作品还须由实际提交树的仓库 matcher 再验证。
-- 发布前最近七篇体裁：赋、文、词、诗、文、曲、词；本轮选择“曲”后为曲、赋、文、词、诗、文、曲，覆盖四类且没有连续三次同体裁；最近十四篇仍同时包含诗、词、曲、文、赋。
+- 《石仓历代诗选》四库全书本卷一百二十四收寇准组诗小序及四绝，秋篇作“岸阔樯稀浪渺茫……一半秋山带夕阳”；本页以此为正文底本。
+- 古文岛《书河上亭壁》核对题名、作者和全诗；其首句作“波渺茫”，并明注“波 一作：浪”，因此本页只在注释说明异文，不混拼。
+- 赏析 123 字；2 联原文与 2 条注释一一对应。
+- 候选：`书河上亭壁 / 寇准 / 岸阔樯稀浪渺茫`（诗）、`西湖七月半 / 张岱 / 西湖七月半，一无可看`（文）、`蝶恋花·槛菊愁烟兰泣露 / 晏殊 / 槛菊愁烟兰泣露`（词）；三项均以当前 132 篇课程排除库运行仓库 matcher，退出码均为 0；仓库题名/首句检索无已发布同篇。
+- 发布前最近七篇体裁：曲、赋、文、词、诗、文、曲；本轮选择“诗”后为诗、曲、赋、文、词、诗、文，七次中仍覆盖五类体裁且不存在连续三次同体裁。
 
 ## Asset and implementation
-- `public/assets/poems/shuixianzi-jiangnan.webp`：本轮 ImageGen 独立生成并压缩为 512×288 WebP、6460 B；本地 RIFF 声明长度与实际字节数一致。
-- `src/JiangnanWaterPage.jsx`：独立页面以“烟—鸥—舟—爱”四段水路组织阅读，支持点击/方向键逐段注释、今译、赏析、背诵、默写、历史入口与完成状态记录。
-- `src/jiangnan-water.css`：桌面横向水路 + 双栏当前段，移动端改为紧凑四站 + 单栏；包含 `focus-visible` 与 `prefers-reduced-motion`。
-- 数据契约：id `shuixianzi-jiangnan`、layout `jiangnan-water-ribbon`、4:4 原文/注释、资源路径、2026-09-24（Asia/Shanghai）学习记录均已做源代码级检查。
+- `public/assets/poems/he-shang-pavilion-sunset.webp`：本轮 ImageGen 独立生成，压缩为 512×288 WebP、6442 B；RIFF 声明长度与实际字节数一致。
+- `src/RiverHalfLightPage.jsx`：独立页面以“河 / 山”两层远望组织阅读；支持点击与方向键切换逐联笺记、今译、赏析、背诵、默写、历史入口及本地完成状态。
+- `src/river-half-light.css`：桌面以亭内阴影 + 河面远望形成左右张力，移动端改为上下叙事；包含 `focus-visible` 与 `prefers-reduced-motion`。
+- 数据契约：id `river-half-sunset`、layout `river-half-light`、2:2 原文/注释、资源路径及 2026-09-24（Asia/Shanghai）学习记录已做源代码级检查。
 
 ## Verification
-- 精确任务基线 SHA 的 GitHub Actions `Validate poetry content` attempt 2 已成功，包含 Network-independent content checks、locked dependencies、production build 与 Sites tests。
-- `npm run bootstrap` 在 connector-reconstructed 依赖配置中返回 20 / `DEPENDENCY_NETWORK_UNAVAILABLE`；因此按协议不伪造本地 production build、Sites tests 或桌面/手机运行时结果，最终以实际提交树的 GitHub Actions 与 Vercel Git 集成为权威 gate。
-- 提交前源代码级检查覆盖：daily id、学习记录首项、唯一布局分发、4:4 原文/注释、131 字赏析、WebP RIFF 完整性、响应式/焦点/减少动态声明。
-- 未提交 `dist/`、`.vercel/`、`node_modules/`、截图或生成器中间文件。
+- 精确任务基线 SHA 的 GitHub Actions `Validate poetry content` attempt 3 已成功，包含 Network-independent content checks、locked dependencies、production build 与 Sites tests。
+- `npm run bootstrap` 返回 20 / `DEPENDENCY_NETWORK_UNAVAILABLE`；按仓库协议继续内容工作，不伪造本地 production build、Sites tests 或桌面/手机运行时结果，最终以实际提交树的 GitHub Actions 与 Vercel Git 集成为 build gate。
+- 提交前检查覆盖：daily id、学习记录首项、唯一布局分发、2:2 原文/注释、123 字赏析、WebP RIFF 完整性、响应式/焦点/减少动态声明。
+- 未提交 `dist/`、`.vercel/`、`node_modules/`、QA 截图或生成器中间文件。
 
 final result: source verification completed; remote build gate pending
