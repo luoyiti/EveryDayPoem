@@ -38,6 +38,7 @@ import { ShahuWestwardPage } from "./ShahuWestwardPage.jsx";
 import { YingfuCagePage } from "./YingfuCagePage.jsx";
 import { JiangnanWaterPage } from "./JiangnanWaterPage.jsx";
 import { RiverHalfLightPage } from "./RiverHalfLightPage.jsx";
+import { SpringDistancePage } from "./SpringDistancePage.jsx";
 import { poemsById } from "./data/poems.js";
 import { dailyPoemId } from "./data/daily.js";
 
@@ -56,6 +57,7 @@ export function App() {
   const poem = useMemo(() => poemsById[routeId] || poemsById[dailyPoemId], [routeId]);
   const navigate = (id) => { window.location.hash = id; };
 
+  if (poem.layout === "spring-water-distance") return <SpringDistancePage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "river-half-light") return <RiverHalfLightPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "jiangnan-water-ribbon") return <JiangnanWaterPage poem={poem} onNavigate={navigate} />;
   if (poem.layout === "yingfu-cage-dawn") return <YingfuCagePage poem={poem} onNavigate={navigate} />;
