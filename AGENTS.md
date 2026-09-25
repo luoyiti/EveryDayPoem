@@ -19,3 +19,6 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - `npm run verify:offline` is the minimum pre-submit contract and must stay dependency-free; `npm run build` must continue to include it so Vercel independently gates production content.
 - All daily publication dates use `Asia/Shanghai`. Do not derive the publication date from UTC.
 - The scheduled-task prompt should point to `prompts/chatgpt-work-daily-task.md` instead of duplicating that file's full text.
+- Daily image writes are binary Git-blob writes only: validate the local WebP RIFF length, upload with `create_blob(..., encoding: "base64")`, and require the returned blob SHA to equal the locally computed Git blob SHA before creating the content tree/commit.
+- `npm run verify:offline` includes a current-daily-asset integrity gate so a truncated or base64-as-text WebP cannot pass GitHub Actions or Vercel build validation.
+- Daily publishing must not create temporary `daily-*` branches or PRs as a recovery path. Prepare the single content commit, re-check `main`, then fast-forward `main` with `force:false`; after a transient ref-update failure, re-check the baseline and retry the same ref update at most once.

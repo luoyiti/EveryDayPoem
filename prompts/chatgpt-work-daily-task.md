@@ -10,7 +10,6 @@
 
 - 本地环境可能无法解析 `github.com` 和 `registry.npmjs.org`。远端 GitHub 读取、基线确认和最终写入一律使用 GitHub 连接器；不要反复运行 `git clone/fetch/pull/push`。
 - 开始时通过 GitHub 连接器记录 `main` 的最新 HEAD SHA，并读取该 SHA 的完整递归文件树和本次需要的实际文件内容。不得使用先前任务残留目录或聊天历史中的旧副本。
-- 每次运行都视为全新的、无状态任务：不得依赖上一轮任务的聊天上下文、摘要、缓存结论或旧候选；所有事实必须从本轮记录的精确 HEAD、仓库文件和本轮检索重新获得。
 - 先运行不依赖第三方包的检查，再处理依赖。执行 `npm run bootstrap`：
   - 退出码 `0`：依赖可用，后续必须完成本地 build 与站点测试；
   - 退出码 `20` 且输出 `DEPENDENCY_NETWORK_UNAVAILABLE`：这是已知网络能力缺口，不是仓库失败。继续执行 `npm run verify:offline`、内容实现和源代码检查；提交后必须以 GitHub Actions 与 Vercel 的远端构建作为最终 build gate；
@@ -51,6 +50,9 @@
 
 1. 先写短视觉 brief：时间、地点、天气、色温、材质、核心意象、视觉命题与作品中的关键转折；不得复制已有篇目的构图。
 2. 需要背景时使用 ImageGen 生成真实视觉资产并保存到 `public/assets/poems/`；不用占位图、emoji、手绘 SVG 或 CSS 拼画替代。
+   - 生成后先在本地转成最终提交格式（优先 WebP），并在任何 Git commit 之前检查二进制完整性：WebP 必须以 `RIFF....WEBP` 开头，RIFF 声明总长度必须与实际文件字节数完全一致。
+   - 二进制图片写入 GitHub 时只能使用 GitHub 连接器的 Git blob 接口：对完整原始 bytes 做 base64 后调用 `create_blob(..., encoding:"base64")`。禁止用 UTF-8 `create_file` / `update_file`、tree 内联 `content`、或把 base64 字符串本身当文件内容来写 `.webp`。
+   - 上传前计算期望 Git blob SHA：`SHA1("blob " + byte_length + "\\0" + raw_bytes)`。`create_blob` 返回 SHA 必须与期望 SHA 完全一致；不一致的 blob 禁止进入 tree/commit。可以重新压缩后重试一次；仍不一致则停止发布并报告，不能先提交再补第二个修复提交。
 3. 在 `src/data/poems.js` 添加完整数据，并在 `src/App.jsx`/样式中为该篇实现独立且响应式的页面布局。注释、译文、赏析、背诵、默写、历史入口必须可用。
 4. 更新 `src/data/daily.js` 与 `data/learning-record.json`，当天新篇必须是学习记录第一项，日期使用 `Asia/Shanghai`；学习记录应保存足以识别作品体裁的信息，供后续轮换判断使用。
 5. 不需要为每天的新篇硬编码专属测试名称；`tests/daily-poem-content.test.mjs` 是通用发布契约，不应改成只验证某一首诗。
@@ -59,7 +61,7 @@
 
 依次执行：
 
-1. `npm run verify:offline`
+1. `npm run verify:offline`（其中 `check:asset` 必须验证当天作品图片存在且 WebP RIFF 长度与实际字节数一致）
 2. 若 `npm run bootstrap` 为 `0`：`npm run build`、`npm run test:sites`，并在桌面与手机视口检查原文、裁切、背景、按钮、控制台；更新 `design-qa.md`。
 3. 若 bootstrap 为 `20`：明确记录“本地 build 因 npm DNS 不可用而未执行”，但仍需检查数据契约、资源路径、布局分发、CSS/JS 修改与 `design-qa.md`；提交后等待 Vercel 的 `npm run build` 与 GitHub Actions 结果，二者至少 Vercel 必须 `READY` 才能报告生产发布成功。
 4. 不提交 `dist/`、`.vercel/`、`node_modules/`、`.firecrawl/` 或 QA 截图。
@@ -67,13 +69,13 @@
 ## 6. 并发保护与单次发布
 
 1. 提交前再次用 GitHub 连接器读取远端 `main` HEAD；必须与任务开始基线 SHA 完全一致。若变化，停止，不覆盖、不强推、不在旧基线上提交。
-2. 本次内容只能形成一个 Git commit，提交信息：`content: publish <篇名>`。使用 GitHub 连接器一次性创建完整 tree/commit，并以 `force:false` 快进 `main`；不得逐文件产生多个提交。
+2. 本次内容只能形成一个 Git commit，提交信息：`content: publish <篇名>`。所有文本与二进制 blob 都必须在提交前完成校验，再使用 GitHub 连接器一次性创建完整 tree/commit。不要为发布回退创建临时 `daily-*` 分支或 PR；内容 commit 可以先保持未挂载，随后以 `force:false` 快进 `main`。若 `update_ref` 出现超时或内部错误，先重新读取 `main`；只有 HEAD 仍等于任务基线时才允许对同一 commit 重试一次。若 HEAD 已变化，或第二次仍无法更新，则停止，不覆盖、不强推，也不改走临时分支/PR。
 3. Vercel 已绑定 GitHub `main`。不要运行 `vercel --prod`、不要创建新项目、不要手动覆盖生产别名。
 4. 提交后检查 Vercel 项目 `poetry`：部署必须对应刚提交的 SHA 且状态为 `READY`；再访问 `https://poetry-blue.vercel.app`，确认 HTTP 200、运行时标题/当天篇名以及新图片资源可访问。若有浏览器能力，再完成桌面与手机运行时检查。
 5. 若远端构建或部署失败，只报告该提交 SHA、日志中的具体错误与下一项修复；同一次任务不得再提交第二个“修复提交”来掩盖失败。
 
 ## 7. 最终报告
 
-仅报告：今日篇名、作者与体裁；最近体裁分布及本次轮换理由；三个候选（注明体裁）及排除校验结果；引用来源；改动文件；`verify:offline` 结果；本地依赖/build 状态；远端构建/部署结果；任务基线 SHA；唯一 GitHub 提交 SHA；Vercel 生产 URL。任何未执行的检查都必须明确写“未执行”及原因，不得用“应该可以”代替证据。
+仅报告：今日篇名、作者与体裁；最近体裁分布及本次轮换理由；三个候选（注明体裁）及排除校验结果；引用来源；改动文件；新图片的本地字节数、期望 Git blob SHA 与连接器返回 SHA 是否一致；`verify:offline` 结果；本地依赖/build 状态；远端构建/部署结果；任务基线 SHA；唯一 GitHub 提交 SHA；Vercel 生产 URL。任何未执行的检查都必须明确写“未执行”及原因，不得用“应该可以”代替证据。
 
 ---
