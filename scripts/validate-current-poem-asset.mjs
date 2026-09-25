@@ -24,7 +24,7 @@ if (!poem.image.startsWith("/assets/poems/")) {
   fail(`${poem.title} image must live under /assets/poems/: ${poem.image}`);
 }
 
-const relativePath = poem.image.replace(/^\\//, "");
+const relativePath = poem.image.startsWith("/") ? poem.image.slice(1) : poem.image;
 const assetPath = path.join(repoRoot, "public", relativePath);
 if (!fs.existsSync(assetPath)) fail(`missing ${relativePath}`);
 
